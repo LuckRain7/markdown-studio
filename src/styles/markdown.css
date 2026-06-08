@@ -1,0 +1,204 @@
+/* ——— Markdown 预览正文排版（GitHub 风格）——— */
+.markdown-body {
+  color: var(--text-strong);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC',
+    Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
+  word-wrap: break-word;
+}
+
+.markdown-body > *:first-child {
+  margin-top: 0;
+}
+
+.markdown-body h1,
+.markdown-body h2,
+.markdown-body h3,
+.markdown-body h4 {
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--text-strong);
+  margin: 1.6em 0 0.8em;
+}
+
+.markdown-body h1 {
+  font-size: 2em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--border);
+}
+.markdown-body h2 {
+  font-size: 1.5em;
+  padding-bottom: 0.3em;
+  border-bottom: 1px solid var(--border);
+}
+.markdown-body h3 {
+  font-size: 1.25em;
+}
+.markdown-body h4 {
+  font-size: 1em;
+}
+
+.markdown-body p {
+  margin: 0.9em 0;
+}
+
+.markdown-body a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-glow);
+  transition: border-color 0.15s ease;
+}
+.markdown-body a:hover {
+  border-bottom-color: var(--accent);
+}
+
+.markdown-body strong {
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+.markdown-body ul,
+.markdown-body ol {
+  margin: 0.9rem 0;
+  padding-left: 1.6rem;
+}
+.markdown-body li {
+  margin: 0.35rem 0;
+}
+.markdown-body li::marker {
+  color: var(--accent);
+}
+
+.markdown-body input[type='checkbox'] {
+  margin-right: 0.5rem;
+  accent-color: var(--accent);
+}
+.markdown-body li:has(input[type='checkbox']) {
+  list-style: none;
+  margin-left: -1.4rem;
+}
+
+.markdown-body blockquote {
+  margin: 1em 0;
+  padding: 0.2em 0 0.2em 1em;
+  border-left: 0.25em solid var(--md-quote-border);
+  color: var(--md-quote-text);
+}
+.markdown-body blockquote p {
+  margin: 0.4em 0;
+}
+
+.markdown-body code {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.86em;
+  background: var(--md-code-bg);
+  padding: 0.15em 0.4em;
+  border-radius: 5px;
+}
+
+.markdown-body pre {
+  margin: 1.2rem 0;
+  padding: 1.1rem 1.3rem;
+  background: var(--md-code-bg);
+  border-radius: 10px;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+}
+.markdown-body pre code {
+  background: transparent;
+  padding: 0;
+  font-size: 0.85rem;
+  line-height: 1.7;
+}
+
+.markdown-body table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.2rem 0;
+  font-size: 0.92rem;
+}
+.markdown-body th,
+.markdown-body td {
+  border: 1px solid var(--border);
+  padding: 0.5rem 0.9rem;
+  text-align: left;
+  /* 防止中文在字符间逐字换行导致竖排，只在标点/空格处断行 */
+  word-break: keep-all;
+}
+.markdown-body th {
+  background: var(--md-code-bg);
+  font-weight: 600;
+}
+.markdown-body tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--md-code-bg) 45%, transparent);
+}
+
+.markdown-body hr {
+  border: none;
+  height: 1px;
+  background: var(--border);
+  margin: 2rem 0;
+}
+
+.markdown-body img {
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+.markdown-body .render-error {
+  color: #c0392b;
+}
+
+/* ——— highlight.js 配色（跟随主题变量）——— */
+.hljs {
+  color: var(--editor-ink);
+}
+.hljs-comment,
+.hljs-quote {
+  color: var(--text-muted);
+  font-style: italic;
+}
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-name {
+  color: var(--accent);
+  font-weight: 500;
+}
+.hljs-string,
+.hljs-attr,
+.hljs-template-variable {
+  color: #5b8a72;
+}
+:root[data-theme='dark'] .hljs-string,
+:root[data-theme='dark'] .hljs-attr {
+  color: #8fc7a6;
+}
+.hljs-number,
+.hljs-literal {
+  color: #b9743a;
+}
+.hljs-title,
+.hljs-function .hljs-title,
+.hljs-section {
+  color: #4a6f9c;
+  font-weight: 500;
+}
+:root[data-theme='dark'] .hljs-title {
+  color: #7fa8d4;
+}
+.hljs-attribute,
+.hljs-variable,
+.hljs-type {
+  color: #9c6b8a;
+}
+.hljs-meta {
+  color: var(--text-muted);
+}
+.hljs-emphasis {
+  font-style: italic;
+}
+.hljs-strong {
+  font-weight: 700;
+}
