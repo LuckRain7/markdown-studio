@@ -3,8 +3,10 @@ import { ref, computed, watch, onMounted, onBeforeUnmount } from 'vue'
 import Toolbar from './components/Toolbar.vue'
 import EditorPane from './components/EditorPane.vue'
 import PreviewPane from './components/PreviewPane.vue'
+import SettingsModal from './components/SettingsModal.vue'
 import { usePersistentRef } from './composables/useStorage.js'
 import { renderMarkdown } from './composables/useMarkdown.js'
+import { useHistory } from './composables/useHistory.js'
 import { sampleMarkdown } from './data/sample.js'
 
 const content = usePersistentRef('markdown-studio:content', sampleMarkdown)
@@ -15,6 +17,8 @@ const toast = ref('')
 const fileInput = ref(null)
 const editorRef = ref(null)
 const previewRef = ref(null)
+const settingsOpen = ref(false)
+const history = useHistory()
 
 const wordCount = computed(() => content.value.replace(/\s/g, '').length)
 
@@ -143,13 +147,58 @@ async function copyHtml() {
   }
 }
 
+// —— 历史记录 ——
+function openSettings() {
+  settingsOpen.value = true
+}
+async function saveHistory() {
+  await history.save(content.value)
+  showToast('已保存到历史')
+}
+function restoreHistory(id) {
+  const text = history.getContent(id)
+  if (text === null) return
+  if (text !== content.value && !confirm('恢复会覆盖当前编辑内容，确定吗？')) return
+  content.value = text
+  settingsOpen.value = false
+  showToast('已恢复该历史版本')
+}
+async function removeHistory(id) {
+  await history.remove(id)
+  showToast('已删除该历史')
+}
+function exportHistory() {
+  const json = history.exportAll()
+  download(`markdown-history-${Date.now()}.json`, json, 'application/json;charset=utf-8')
+  showToast('已导出全部历史')
+}
+function importHistory(file) {
+  const reader = new FileReader()
+  reader.onload = async () => {
+    try {
+      const { added, skipped } = await history.importJson(String(reader.result ?? ''))
+      showToast(`导入 ${added} 条，跳过 ${skipped} 条重复`)
+    } catch (err) {
+      showToast(`导入失败：${err?.message || '文件格式不符'}`)
+    }
+  }
+  reader.onerror = () => showToast('文件读取失败')
+  reader.readAsText(file)
+}
+
 // —— 预览全屏（窗口内 CSS 全屏，非浏览器原生全屏）——
 function toggleFullscreen() {
   isFullscreen.value = !isFullscreen.value
 }
 function onKeydown(e) {
-  if (e.key === 'Escape' && isFullscreen.value) {
-    isFullscreen.value = false
+  if (e.key === 'Escape') {
+    if (settingsOpen.value) {
+      settingsOpen.value = false
+      return
+    }
+    if (isFullscreen.value) {
+      isFullscreen.value = false
+    }
   }
 }
 
@@ -173,6 +222,7 @@ function syncScroll(source, e) {
 
 onMounted(() => {
   document.addEventListener('keydown', onKeydown)
+  history.init()
 })
 onBeforeUnmount(() => {
   document.removeEventListener('keydown', onKeydown)
@@ -192,6 +242,7 @@ onBeforeUnmount(() => {
       @copy-html="copyHtml"
       @toggle-fullscreen="toggleFullscreen"
       @toggle-theme="toggleTheme"
+      @open-settings="openSettings"
     />
 
     <main class="workspace">
@@ -216,6 +267,18 @@ onBeforeUnmount(() => {
       accept=".md,.markdown,.txt,text/markdown"
       class="hidden-input"
       @change="onFileChosen"
+    />
+
+    <SettingsModal
+      :open="settingsOpen"
+      :items="history.items.value"
+      :is-supported="history.isSupported.value"
+      @close="settingsOpen = false"
+      @save="saveHistory"
+      @restore="restoreHistory"
+      @remove="removeHistory"
+      @export="exportHistory"
+      @import="importHistory"
     />
 
     <Transition name="toast">
