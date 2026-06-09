@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Markdown Studio · 方案 C 定稿</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; padding: 48px 32px 96px;
+    font-family: -apple-system, "Segoe UI", "Noto Sans SC", sans-serif;
+    background: #f7fafc; color: #2d3748;
+  }
+  h1 { font-size: 22px; font-weight: 700; margin: 0 0 4px; }
+  .sub { color: #718096; margin: 0 0 40px; font-size: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 28px; max-width: 760px; }
+  .card { border: 1px solid #e2e8f0; border-radius: 16px; overflow: hidden; background: #fff; }
+  .card h2 { font-size: 15px; margin: 0; padding: 16px 20px 16px; }
+  .stage { display: grid; grid-template-columns: 1fr 1fr; }
+  .pane { padding: 32px 0; display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  .pane.light { background: linear-gradient(135deg,#f7fafc,#e2e8f0); }
+  .pane.dark  { background: linear-gradient(135deg,#1a202c,#202938); }
+  .pane.dark .label { color: #718096; }
+  .label { font-size: 11px; letter-spacing: .04em; color: #a0aec0; }
+  .big   { width: 84px; height: 84px; }
+  .mid   { width: 40px; height: 40px; }
+  .small { width: 22px; height: 22px; }
+  .lockup { display: flex; align-items: center; gap: 10px; }
+  .lockup .name { font-size: 17px; font-weight: 700; }
+  .pane.light .lockup .name { color: #2d3748; }
+  .pane.dark  .lockup .name { color: #f7fafc; }
+  .pane.light svg { color: #3182ce; }
+  .pane.dark  svg { color: #4299e1; }
+</style>
+</head>
+<body>
+  <h1>Markdown Studio — 方案 C 定稿（箭头 descender M）</h1>
+  <p class="sub">几何已修正：箭头尖与竖杆末端对齐，箭头作为 descender 落在 M 双腿下方。左卡 = 线宽 9，右卡 = 线宽 11（更厚重）。每格含 大图标 / 中 / favicon / 横向锁版。</p>
+
+  <div class="grid">
+
+    <!-- 线宽 9 -->
+    <div class="card">
+      <h2>线宽 9（清秀）</h2>
+      <div class="stage">
+        <div class="pane light">
+          <svg class="big" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 58 L22 24 L48 46 L74 24 L74 58"/><path d="M48 46 L48 78"/><path d="M35 65 L48 78 L61 65"/></svg>
+          <svg class="mid" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 58 L22 24 L48 46 L74 24 L74 58"/><path d="M48 46 L48 78"/><path d="M35 65 L48 78 L61 65"/></svg>
+          <svg class="small" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 58 L22 24 L48 46 L74 24 L74 58"/><path d="M48 46 L48 78"/><path d="M35 65 L48 78 L61 65"/></svg>
+          <div class="lockup">
+            <svg class="mid" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 58 L22 24 L48 46 L74 24 L74 58"/><path d="M48 46 L48 78"/><path d="M35 65 L48 78 L61 65"/></svg>
+            <span class="name">Markdown Studio</span>
+          </div>
+        </div>
+        <div class="pane dark">
+          <svg class="big" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 58 L22 24 L48 46 L74 24 L74 58"/><path d="M48 46 L48 78"/><path d="M35 65 L48 78 L61 65"/></svg>
+          <svg class="mid" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 58 L22 24 L48 46 L74 24 L74 58"/><path d="M48 46 L48 78"/><path d="M35 65 L48 78 L61 65"/></svg>
+          <svg class="small" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 58 L22 24 L48 46 L74 24 L74 58"/><path d="M48 46 L48 78"/><path d="M35 65 L48 78 L61 65"/></svg>
+          <div class="lockup">
+            <svg class="mid" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"><path d="M22 58 L22 24 L48 46 L74 24 L74 58"/><path d="M48 46 L48 78"/><path d="M35 65 L48 78 L61 65"/></svg>
+            <span class="name">Markdown Studio</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 线宽 11 -->
+    <div class="card">
+      <h2>线宽 11（厚重）</h2>
+      <div class="stage">
+        <div class="pane light">
+          <svg class="big" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><path d="M22 58 L22 24 L48 46 L74 24 L74 58"/><path d="M48 46 L48 78"/><path d="M34 64 L48 78 L62 64"/></svg>
+          <svg class="mid" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><path d="M22 58 L22 24 L48 46 L74 24 L74 58"/><path d="M48 46 L48 78"/><path d="M34 64 L48 78 L62 64"/></svg>
+          <svg class="small" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><path d="M22 58 L22 24 L48 46 L74 24 L74 58"/><path d="M48 46 L48 78"/><path d="M34 64 L48 78 L62 64"/></svg>
+          <div class="lockup">
+            <svg class="mid" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><path d="M22 58 L22 24 L48 46 L74 24 L74 58"/><path d="M48 46 L48 78"/><path d="M34 64 L48 78 L62 64"/></svg>
+            <span class="name">Markdown Studio</span>
+          </div>
+        </div>
+        <div class="pane dark">
+          <svg class="big" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><path d="M22 58 L22 24 L48 46 L74 24 L74 58"/><path d="M48 46 L48 78"/><path d="M34 64 L48 78 L62 64"/></svg>
+          <svg class="mid" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><path d="M22 58 L22 24 L48 46 L74 24 L74 58"/><path d="M48 46 L48 78"/><path d="M34 64 L48 78 L62 64"/></svg>
+          <svg class="small" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><path d="M22 58 L22 24 L48 46 L74 24 L74 58"/><path d="M48 46 L48 78"/><path d="M34 64 L48 78 L62 64"/></svg>
+          <div class="lockup">
+            <svg class="mid" viewBox="0 0 96 96" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"><path d="M22 58 L22 24 L48 46 L74 24 L74 58"/><path d="M48 46 L48 78"/><path d="M34 64 L48 78 L62 64"/></svg>
+            <span class="name">Markdown Studio</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

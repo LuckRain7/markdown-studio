@@ -1,4 +1,6 @@
 <script setup>
+import BrandLogo from './BrandLogo.vue'
+
 defineProps({
   theme: { type: String, default: 'light' },
   isFullscreen: { type: Boolean, default: false },
@@ -20,7 +22,7 @@ const emit = defineEmits([
 <template>
   <header class="toolbar">
     <div class="brand">
-      <span class="brand-mark">✍</span>
+      <span class="brand-mark"><BrandLogo /></span>
       <div class="brand-text">
         <h1>Markdown Studio</h1>
         <p>安静 · 专注 · 即时预览</p>
@@ -131,13 +133,10 @@ const emit = defineEmits([
 .brand-mark {
   display: grid;
   place-items: center;
-  width: 38px;
-  height: 38px;
-  border-radius: 11px;
-  font-size: 1.15rem;
-  background: var(--accent);
-  color: var(--accent-ink);
-  box-shadow: 0 2px 8px -2px var(--accent-glow);
+  width: 34px;
+  height: 34px;
+  /* 无边框几何极简：直接用主调蓝描边的 M↓，自动跟随主题 */
+  color: var(--accent);
 }
 
 .brand-text h1 {
