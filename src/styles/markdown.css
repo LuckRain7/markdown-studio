@@ -121,7 +121,7 @@
 .markdown-body th,
 .markdown-body td {
   border: 1px solid var(--border);
-  padding: 0.5rem 0.9rem;
+  padding: 0.3rem 0.6rem;
   text-align: left;
   /* 防止中文在字符间逐字换行导致竖排，只在标点/空格处断行 */
   word-break: keep-all;
