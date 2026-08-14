@@ -30,8 +30,8 @@ watch(
   },
   { immediate: true },
 )
-function toggleTheme() {
-  theme.value = theme.value === 'dark' ? 'light' : 'dark'
+function setTheme(val) {
+  theme.value = val
 }
 
 // —— 提示气泡 ——
@@ -241,7 +241,7 @@ onBeforeUnmount(() => {
       @export-html="exportHtml"
       @copy-html="copyHtml"
       @toggle-fullscreen="toggleFullscreen"
-      @toggle-theme="toggleTheme"
+      @set-theme="setTheme"
       @open-settings="openSettings"
     />
 

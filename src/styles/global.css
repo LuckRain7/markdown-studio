@@ -3,8 +3,8 @@
 /* ——— 主题变量（冷灰 + 蓝，GitHub 风格亮色）——— */
 :root,
 :root[data-theme='light'] {
-  --bg: #f7fafc;
-  --bg-gradient: linear-gradient(135deg, #f7fafc 0%, #edf2f7 50%, #e2e8f0 100%);
+  --bg: #ffffff;
+  --bg-gradient: #ffffff;
   --surface: #ffffff;
   --surface-hover: #edf2f7;
   --editor-bg: #ffffff;
@@ -54,6 +54,314 @@
   --md-code-bg: #2d3748;
   --md-quote-text: #a0aec0;
   --md-quote-border: #4a5568;
+}
+
+/* ——— 护眼绿（柔和豆沙绿，低饱和、低对比）——— */
+:root[data-theme='green'] {
+  --bg: #ffffff;
+  --bg-gradient: #ffffff;
+  --surface: #ffffff;
+  --surface-hover: #e3eed8;
+  --editor-bg: #ffffff;
+  --preview-bg: #ffffff;
+  --border: #cdd9c0;
+
+  --text: #4a5a40;
+  --text-strong: #2f3b28;
+  --text-muted: #8a9a7e;
+  --editor-ink: #2f3b28;
+
+  --accent: #4a8a2a;
+  --accent-hover: #3a7a1e;
+  --accent-ink: #ffffff;
+  --accent-glow: rgba(74, 138, 42, 0.22);
+
+  --toast-bg: #2f3b28;
+  --toast-ink: #eef5e9;
+
+  --md-code-bg: #e3eed8;
+  --md-quote-text: #6a7a5e;
+  --md-quote-border: #c0cbb0;
+}
+
+/* ——— 暖纸黄（sepia 暖黄纸张色，久看不刺眼）——— */
+:root[data-theme='sepia'] {
+  --bg: #ffffff;
+  --bg-gradient: #ffffff;
+  --surface: #ffffff;
+  --surface-hover: #f0e4c8;
+  --editor-bg: #ffffff;
+  --preview-bg: #ffffff;
+  --border: #e0d2b0;
+
+  --text: #5a4a2a;
+  --text-strong: #3a2e18;
+  --text-muted: #a89070;
+  --editor-ink: #3a2e18;
+
+  --accent: #c08820;
+  --accent-hover: #a06f15;
+  --accent-ink: #ffffff;
+  --accent-glow: rgba(192, 136, 32, 0.22);
+
+  --toast-bg: #3a2e18;
+  --toast-ink: #f7f0dc;
+
+  --md-code-bg: #f0e4c8;
+  --md-quote-text: #7a6a4a;
+  --md-quote-border: #d4c4a0;
+}
+
+/* ——— 深海蓝（沉静海蓝，专注冷调）——— */
+:root[data-theme='ocean'] {
+  --bg: #ffffff;
+  --bg-gradient: #ffffff;
+  --surface: #ffffff;
+  --surface-hover: #dceaf6;
+  --editor-bg: #ffffff;
+  --preview-bg: #ffffff;
+  --border: #c2d4e8;
+
+  --text: #3a4a5a;
+  --text-strong: #1e2e3e;
+  --text-muted: #7a8a9a;
+  --editor-ink: #1e2e3e;
+
+  --accent: #2a6cb0;
+  --accent-hover: #1f5588;
+  --accent-ink: #ffffff;
+  --accent-glow: rgba(42, 108, 176, 0.18);
+
+  --toast-bg: #1e2e3e;
+  --toast-ink: #eaf2fb;
+
+  --md-code-bg: #dceaf6;
+  --md-quote-text: #5a6a7a;
+  --md-quote-border: #a8c0d8;
+}
+
+/* ——— 暮霞橙（落日暖橙，温柔不灼）——— */
+:root[data-theme='sunset'] {
+  --bg: #ffffff;
+  --bg-gradient: #ffffff;
+  --surface: #ffffff;
+  --surface-hover: #fbe0d0;
+  --editor-bg: #ffffff;
+  --preview-bg: #ffffff;
+  --border: #e8c8ac;
+
+  --text: #5a4030;
+  --text-strong: #3a2418;
+  --text-muted: #a88870;
+  --editor-ink: #3a2418;
+
+  --accent: #d46a1e;
+  --accent-hover: #b05410;
+  --accent-ink: #ffffff;
+  --accent-glow: rgba(212, 106, 30, 0.20);
+
+  --toast-bg: #3a2418;
+  --toast-ink: #fdf0e6;
+
+  --md-code-bg: #fbe0d0;
+  --md-quote-text: #7a5a40;
+  --md-quote-border: #d8b090;
+}
+
+/* ——— 午夜墨（深蓝黑夜，静谧专注）——— */
+:root[data-theme='midnight'] {
+  --bg: #141826;
+  --bg-gradient: linear-gradient(135deg, #141826 0%, #1a1f30 50%, #20253a 100%);
+  --surface: #20263a;
+  --surface-hover: #2a3048;
+  --editor-bg: #161a28;
+  --preview-bg: #161a28;
+  --border: #2a3048;
+
+  --text: #b8c0d8;
+  --text-strong: #e8eef8;
+  --text-muted: #6a7290;
+  --editor-ink: #d0d8e8;
+
+  --accent: #7a8af5;
+  --accent-hover: #9aa8ff;
+  --accent-ink: #141826;
+  --accent-glow: rgba(122, 138, 245, 0.24);
+
+  --toast-bg: #e8eef8;
+  --toast-ink: #141826;
+
+  --md-code-bg: #20263a;
+  --md-quote-text: #8a92a8;
+  --md-quote-border: #3a4058;
+}
+
+/* ——— Anthropic（暖米纸 + 陶土橙，品牌风）——— */
+:root[data-theme='anthropic'] {
+  --bg: #ffffff;
+  --bg-gradient: #ffffff;
+  --surface: #ffffff;
+  --surface-hover: #f4f1ec;
+  --editor-bg: #ffffff;
+  --preview-bg: #ffffff;
+  --border: #e8e3da;
+
+  --text: #4a4640;
+  --text-strong: #1f1d1a;
+  --text-muted: #9a958c;
+  --editor-ink: #1f1d1a;
+
+  --accent: #cc785c;
+  --accent-hover: #b5634a;
+  --accent-ink: #ffffff;
+  --accent-glow: rgba(204, 120, 92, 0.20);
+
+  --toast-bg: #1f1d1a;
+  --toast-ink: #f4f1ec;
+
+  --md-code-bg: #f4f1ec;
+  --md-quote-text: #6a6560;
+  --md-quote-border: #d8d0c4;
+}
+
+/* ——— Nord 雪山青（冷调蓝绿灰，极简护眼）——— */
+:root[data-theme='nord'] {
+  --bg: #ffffff;
+  --bg-gradient: #ffffff;
+  --surface: #ffffff;
+  --surface-hover: #eceff4;
+  --editor-bg: #ffffff;
+  --preview-bg: #ffffff;
+  --border: #d8dee9;
+
+  --text: #4c566a;
+  --text-strong: #2e3440;
+  --text-muted: #8b94a8;
+  --editor-ink: #2e3440;
+
+  --accent: #5e81ac;
+  --accent-hover: #4c6b96;
+  --accent-ink: #ffffff;
+  --accent-glow: rgba(94, 129, 172, 0.18);
+
+  --toast-bg: #2e3440;
+  --toast-ink: #eceff4;
+
+  --md-code-bg: #e5e9f0;
+  --md-quote-text: #6b7390;
+  --md-quote-border: #c8d2e0;
+}
+
+/* ——— Gruvbox 复古林（暖土橙 + 苔绿暗底）——— */
+:root[data-theme='gruvbox'] {
+  --bg: #282828;
+  --bg-gradient: linear-gradient(135deg, #282828 0%, #2a2622 50%, #2f2c28 100%);
+  --surface: #3c3836;
+  --surface-hover: #504945;
+  --editor-bg: #1d2021;
+  --preview-bg: #282828;
+  --border: #504945;
+
+  --text: #d5c4a1;
+  --text-strong: #ebdbb2;
+  --text-muted: #928374;
+  --editor-ink: #ebdbb2;
+
+  --accent: #fe8019;
+  --accent-hover: #fabd2f;
+  --accent-ink: #282828;
+  --accent-glow: rgba(254, 128, 25, 0.22);
+
+  --toast-bg: #ebdbb2;
+  --toast-ink: #282828;
+
+  --md-code-bg: #3c3836;
+  --md-quote-text: #bdae93;
+  --md-quote-border: #665c54;
+}
+
+/* ——— Solarized 阳光（科学护眼，暖边 + 蓝强调）——— */
+:root[data-theme='solarized'] {
+  --bg: #ffffff;
+  --bg-gradient: #ffffff;
+  --surface: #ffffff;
+  --surface-hover: #eee8d5;
+  --editor-bg: #ffffff;
+  --preview-bg: #ffffff;
+  --border: #e0d8c4;
+
+  --text: #586e75;
+  --text-strong: #073642;
+  --text-muted: #93a1a1;
+  --editor-ink: #073642;
+
+  --accent: #1a7ab8;
+  --accent-hover: #155d8c;
+  --accent-ink: #ffffff;
+  --accent-glow: rgba(26, 122, 184, 0.18);
+
+  --toast-bg: #073642;
+  --toast-ink: #eee8d5;
+
+  --md-code-bg: #eee8d5;
+  --md-quote-text: #6c7a7e;
+  --md-quote-border: #c8c0a8;
+}
+
+/* ——— Catppuccin 拿铁（柔和奶咖底 + 莓紫强调）——— */
+:root[data-theme='catppuccin'] {
+  --bg: #ffffff;
+  --bg-gradient: #ffffff;
+  --surface: #ffffff;
+  --surface-hover: #e6e9ef;
+  --editor-bg: #ffffff;
+  --preview-bg: #ffffff;
+  --border: #dce0e8;
+
+  --text: #5c5f91;
+  --text-strong: #4c4f69;
+  --text-muted: #9ca0c4;
+  --editor-ink: #4c4f69;
+
+  --accent: #8839ef;
+  --accent-hover: #6f2bc0;
+  --accent-ink: #ffffff;
+  --accent-glow: rgba(136, 57, 239, 0.18);
+
+  --toast-bg: #4c4f69;
+  --toast-ink: #eff1f5;
+
+  --md-code-bg: #eef0f5;
+  --md-quote-text: #7a7d99;
+  --md-quote-border: #ccd0e0;
+}
+
+/* ——— MDN（文档蓝，干净极简）——— */
+:root[data-theme='mdn'] {
+  --bg: #ffffff;
+  --bg-gradient: #ffffff;
+  --surface: #ffffff;
+  --surface-hover: #f0f0f4;
+  --editor-bg: #ffffff;
+  --preview-bg: #ffffff;
+  --border: #e3e3e8;
+
+  --text: #3b3b40;
+  --text-strong: #151517;
+  --text-muted: #8a8a92;
+  --editor-ink: #151517;
+
+  --accent: #0056b7;
+  --accent-hover: #004494;
+  --accent-ink: #ffffff;
+  --accent-glow: rgba(0, 86, 183, 0.18);
+
+  --toast-bg: #151517;
+  --toast-ink: #f0f0f4;
+
+  --md-code-bg: #f5f5f7;
+  --md-quote-text: #5a5a62;
+  --md-quote-border: #d4d4dc;
 }
 
 * {

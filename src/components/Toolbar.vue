@@ -1,4 +1,5 @@
 <script setup>
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import BrandLogo from './BrandLogo.vue'
 
 defineProps({
@@ -14,9 +15,43 @@ const emit = defineEmits([
   'export-html',
   'copy-html',
   'toggle-fullscreen',
-  'toggle-theme',
+  'set-theme',
   'open-settings',
 ])
+
+// 可选主题：id 对应 global.css 里的 [data-theme='...']，swatch 为色板预览色
+const themes = [
+  { id: 'light', name: '亮色', swatch: 'linear-gradient(135deg,#ffffff,#cbd5e0)' },
+  { id: 'dark', name: '暗色', swatch: 'linear-gradient(135deg,#4a5568,#1a202c)' },
+  { id: 'green', name: '护眼绿', swatch: 'linear-gradient(135deg,#e3eed8,#4a8a2a)' },
+  { id: 'sepia', name: '暖纸黄', swatch: 'linear-gradient(135deg,#f0e4c8,#c08820)' },
+  { id: 'ocean', name: '深海蓝', swatch: 'linear-gradient(135deg,#d8e6f5,#2a6cb0)' },
+  { id: 'sunset', name: '暮霞橙', swatch: 'linear-gradient(135deg,#fbe0d0,#d46a1e)' },
+  { id: 'anthropic', name: 'Anthropic', swatch: 'linear-gradient(135deg,#f4f1ec,#cc785c)' },
+  { id: 'nord', name: 'Nord 雪山青', swatch: 'linear-gradient(135deg,#e5e9f0,#5e81ac)' },
+  { id: 'gruvbox', name: 'Gruvbox 复古林', swatch: 'linear-gradient(135deg,#3c3836,#fe8019)' },
+  { id: 'solarized', name: 'Solarized 阳光', swatch: 'linear-gradient(135deg,#eee8d5,#1a7ab8)' },
+  { id: 'catppuccin', name: 'Catppuccin 拿铁', swatch: 'linear-gradient(135deg,#e6e9ef,#8839ef)' },
+  { id: 'mdn', name: 'MDN', swatch: 'linear-gradient(135deg,#f0f0f4,#0056b7)' },
+  { id: 'midnight', name: '午夜墨', swatch: 'linear-gradient(135deg,#2a3048,#7a8af5)' },
+]
+
+const themeMenuOpen = ref(false)
+function toggleThemeMenu() {
+  themeMenuOpen.value = !themeMenuOpen.value
+}
+function pickTheme(id) {
+  emit('set-theme', id)
+  themeMenuOpen.value = false
+}
+// Esc 关闭主题菜单，与设置/全屏浮层行为一致
+function onKeydown(e) {
+  if (e.key === 'Escape' && themeMenuOpen.value) {
+    themeMenuOpen.value = false
+  }
+}
+onMounted(() => document.addEventListener('keydown', onKeydown))
+onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
 </script>
 
 <template>
@@ -88,19 +123,50 @@ const emit = defineEmits([
         </svg>
       </button>
 
-      <button
-        class="btn icon-only"
-        :title="theme === 'dark' ? '切换到亮色' : '切换到暗色'"
-        @click="emit('toggle-theme')"
-      >
-        <svg v-if="theme === 'dark'" viewBox="0 0 24 24" aria-hidden="true">
-          <circle cx="12" cy="12" r="4" />
-          <path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4" />
-        </svg>
-        <svg v-else viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" />
-        </svg>
-      </button>
+      <div class="theme-picker">
+        <button
+          class="btn icon-only"
+          title="切换主题"
+          :class="{ active: themeMenuOpen }"
+          @click="toggleThemeMenu"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="9" />
+            <circle cx="8.5" cy="9" r="1.4" />
+            <circle cx="15.5" cy="9" r="1.4" />
+            <circle cx="9.5" cy="15" r="1.4" />
+            <circle cx="15" cy="14.5" r="1.4" />
+          </svg>
+        </button>
+        <Transition name="menu">
+          <div v-if="themeMenuOpen" class="theme-menu" role="menu">
+            <button
+              v-for="t in themes"
+              :key="t.id"
+              class="theme-option"
+              :class="{ current: t.id === theme }"
+              role="menuitem"
+              @click="pickTheme(t.id)"
+            >
+              <span class="swatch" :style="{ background: t.swatch }"></span>
+              <span class="theme-name">{{ t.name }}</span>
+              <svg
+                v-if="t.id === theme"
+                class="check"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path d="M5 12l5 5L20 7" />
+              </svg>
+            </button>
+          </div>
+        </Transition>
+        <div
+          v-if="themeMenuOpen"
+          class="theme-backdrop"
+          @click="themeMenuOpen = false"
+        ></div>
+      </div>
 
       <button class="btn icon-only" title="历史与设置" @click="emit('open-settings')">
         <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -225,5 +291,100 @@ const emit = defineEmits([
   .word-count {
     display: none;
   }
+}
+
+/* —— 主题色板选择器 —— */
+.theme-picker {
+  position: relative;
+}
+
+.theme-picker .btn.active {
+  background: var(--surface-hover);
+  border-color: var(--border);
+  color: var(--text-strong);
+}
+
+.theme-menu {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  z-index: 60;
+  min-width: 150px;
+  max-height: min(70vh, 380px);
+  overflow-y: auto;
+  padding: 0.3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  box-shadow: 0 12px 32px -10px rgba(0, 0, 0, 0.28);
+}
+
+.theme-option {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.45rem 0.6rem;
+  font-family: inherit;
+  font-size: 0.82rem;
+  color: var(--text);
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  text-align: left;
+  width: 100%;
+}
+
+.theme-option:hover {
+  background: var(--surface-hover);
+  color: var(--text-strong);
+}
+
+.theme-option.current {
+  color: var(--text-strong);
+  font-weight: 600;
+}
+
+.swatch {
+  flex: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  box-shadow: inset 0 0 0 1.5px rgba(255, 255, 255, 0.4);
+}
+
+.theme-name {
+  flex: 1;
+}
+
+.theme-option .check {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: var(--accent);
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 55;
+}
+
+.menu-enter-active,
+.menu-leave-active {
+  transition: opacity 0.16s ease, transform 0.16s ease;
+}
+.menu-enter-from,
+.menu-leave-to {
+  opacity: 0;
+  transform: translateY(-6px);
 }
 </style>

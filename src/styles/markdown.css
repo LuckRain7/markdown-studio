@@ -172,7 +172,9 @@
   color: #5b8a72;
 }
 :root[data-theme='dark'] .hljs-string,
-:root[data-theme='dark'] .hljs-attr {
+:root[data-theme='dark'] .hljs-attr,
+:root[data-theme='midnight'] .hljs-string,
+:root[data-theme='midnight'] .hljs-attr {
   color: #8fc7a6;
 }
 .hljs-number,
@@ -185,8 +187,22 @@
   color: #4a6f9c;
   font-weight: 500;
 }
-:root[data-theme='dark'] .hljs-title {
+:root[data-theme='dark'] .hljs-title,
+:root[data-theme='midnight'] .hljs-title {
   color: #7fa8d4;
+}
+
+/* Gruvbox 代码高亮：绿字符串 / 黄标题，贴合原色板 */
+:root[data-theme='gruvbox'] .hljs-string,
+:root[data-theme='gruvbox'] .hljs-attr {
+  color: #b8bb26;
+}
+:root[data-theme='gruvbox'] .hljs-title {
+  color: #fabd2f;
+}
+:root[data-theme='gruvbox'] .hljs-number,
+:root[data-theme='gruvbox'] .hljs-literal {
+  color: #d3869b;
 }
 .hljs-attribute,
 .hljs-variable,
@@ -201,4 +217,28 @@
 }
 .hljs-strong {
   font-weight: 700;
+}
+
+/* ——— 主题色主题：加强重点部分高亮（亮色/暗色保持 GitHub 原味）——— */
+/* 用 :not() 一并覆盖除 light/dark 外的所有主题，加减主题无需改这里 */
+:root:not([data-theme='light']):not([data-theme='dark']) .markdown-body strong {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+:root:not([data-theme='light']):not([data-theme='dark']) .markdown-body h1,
+:root:not([data-theme='light']):not([data-theme='dark']) .markdown-body h2,
+:root:not([data-theme='light']):not([data-theme='dark']) .markdown-body h3,
+:root:not([data-theme='light']):not([data-theme='dark']) .markdown-body h4 {
+  color: var(--accent);
+}
+
+:root:not([data-theme='light']):not([data-theme='dark']) .markdown-body h1,
+:root:not([data-theme='light']):not([data-theme='dark']) .markdown-body h2 {
+  border-bottom-color: var(--accent-glow);
+}
+
+:root:not([data-theme='light']):not([data-theme='dark']) .markdown-body a {
+  font-weight: 600;
+  border-bottom-color: var(--accent);
 }
