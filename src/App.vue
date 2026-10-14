@@ -11,6 +11,12 @@ import { sampleMarkdown } from './data/sample.js'
 
 const content = usePersistentRef('markdown-studio:content', sampleMarkdown)
 const theme = usePersistentRef('markdown-studio:theme', 'light')
+// 全屏阅读时正文的居中宽度（px），存储为字符串，读取时转数字并兜底
+const readingWidthRaw = usePersistentRef('markdown-studio:reading-width', '900')
+const readingWidth = computed({
+  get: () => Number(readingWidthRaw.value) || 900,
+  set: (val) => (readingWidthRaw.value = String(val)),
+})
 
 const isFullscreen = ref(false)
 const toast = ref('')
@@ -255,6 +261,7 @@ onBeforeUnmount(() => {
       <PreviewPane
         ref="previewRef"
         :content="content"
+        v-model:reading-width="readingWidth"
         :fullscreen="isFullscreen"
         @scroll="(e) => syncScroll('preview', e)"
         @exit-fullscreen="isFullscreen = false"
