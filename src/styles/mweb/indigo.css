@@ -1,0 +1,360 @@
+/* mweb-themes · indigo
+ * 来源：https://github.com/imageslr/mweb-themes（ISC）
+ * 由 scripts/build-mweb-themes.cjs 生成，请勿手改 */
+@charset "UTF-8";
+.mweb-indigo * {
+  box-sizing: border-box;
+}
+
+.mweb-indigo {
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  color: #595959;
+  font-size: 16px;
+  line-height: 1.8em;
+  background-image: linear-gradient(90deg, rgba(60, 10, 30, 0.05) 3%, transparent 0), linear-gradient(1turn, rgba(60, 10, 30, 0.05) 3%, transparent 0);
+  background-size: 20px 20px;
+  background-position: 50%;
+  word-break: break-all;
+}
+
+/* 主题自定义 */
+.mweb-indigo blockquote {
+  margin-left: 0;
+  background-color: #ebf4ff;
+  border-color: #7f9cf5;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: #667eea;
+}
+
+.mweb-indigo strong {
+  color: #5a67d8;
+}
+
+.mweb-indigo code, .mweb-indigo a {
+  color: #5a67d8;
+}
+
+.mweb-indigo a {
+  border-color: #667eea;
+}
+
+.mweb-indigo code {
+  background-color: #ebf4ff;
+}
+
+.mweb-indigo blockquote, .mweb-indigo details, .mweb-indigo dl, .mweb-indigo ol, .mweb-indigo p, .mweb-indigo pre, .mweb-indigo table, .mweb-indigo ul {
+  margin-bottom: 1rem;
+}
+
+.mweb-indigo ol {
+  list-style: decimal;
+}
+
+.mweb-indigo ul {
+  list-style: disc;
+}
+
+.mweb-indigo ol, .mweb-indigo ul {
+  padding-left: 2em;
+}
+
+.mweb-indigo h1, .mweb-indigo h2 {
+  border-color: #5a67d8;
+  border-style: solid;
+  border-top-width: 0px;
+  border-right-width: 0px;
+  font-weight: 500;
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+  padding-left: 0.75rem;
+}
+
+/* 主题自定义 end */
+/* 布局，一般不需要改动 */
+.mweb-indigo h1, .mweb-indigo h2 {
+  border-bottom: 1px solid #eaecef !important;
+  border-left-width: 6px;
+}
+
+.mweb-indigo h1, .mweb-indigo h2, .mweb-indigo h3, .mweb-indigo h4, .mweb-indigo h5, .mweb-indigo h6 {
+  margin-bottom: 16px;
+  line-height: 1.25;
+}
+
+.mweb-indigo blockquote {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  border-left: 0.25em solid;
+}
+
+.mweb-indigo blockquote > :last-child {
+  margin-bottom: 0;
+}
+
+.mweb-indigo blockquote > :first-child {
+  margin-top: 0;
+}
+
+.mweb-indigo strong {
+  font-weight: bold;
+}
+
+.mweb-indigo strong::before {
+  content: "「";
+}
+
+.mweb-indigo strong::after {
+  content: "」";
+}
+
+.mweb-indigo code, .mweb-indigo a {
+  font-weight: 500;
+}
+
+.mweb-indigo code, .mweb-indigo a {
+  font-size: unset;
+}
+
+.mweb-indigo a {
+  text-decoration: none;
+  border-bottom: 1px solid;
+}
+
+.mweb-indigo .footnote-ref {
+  border-width: 0px;
+}
+
+.mweb-indigo code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+.mweb-indigo pre > code {
+  font-weight: 400;
+  color: unset;
+  line-height: 1.6;
+}
+
+.mweb-indigo picture img {
+  border-radius: 6px;
+  display: block;
+  margin: 10px auto;
+  -o-object-fit: contain;
+  object-fit: contain;
+  box-shadow: 2px 4px 7px #999;
+}
+
+.mweb-indigo img {
+  max-width: 100%;
+  display: block;
+  margin: 10px auto;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 2px 4px 7px #999;
+}
+
+.mweb-indigo picture {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.mweb-indigo pre, .mweb-indigo pre code[class*=language-] {
+  display: block;
+  overflow-x: auto;
+  padding: 0;
+  /* color: #abb2bf; */
+}
+
+.mweb-indigo pre code[class*=language-] {
+  padding: 12px;
+  padding-top: 6px;
+}
+
+.mweb-indigo pre::before {
+  content: "";
+  display: block;
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI1NCIgaGVpZ2h0PSIxNCIgdmlld0JveD0iMCAwIDU0IDE0Ij4KICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDEgMSkiPgogICAgPGNpcmNsZSBjeD0iNiIgY3k9IjYiIHI9IjYiIGZpbGw9IiNGRjVGNTYiIHN0cm9rZT0iI0UwNDQzRSIgc3Ryb2tlLXdpZHRoPSIuNSIvPgogICAgPGNpcmNsZSBjeD0iMjYiIGN5PSI2IiByPSI2IiBmaWxsPSIjRkZCRDJFIiBzdHJva2U9IiNERUExMjMiIHN0cm9rZS13aWR0aD0iLjUiLz4KICAgIDxjaXJjbGUgY3g9IjQ2IiBjeT0iNiIgcj0iNiIgZmlsbD0iIzI3QzkzRiIgc3Ryb2tlPSIjMUFBQjI5IiBzdHJva2Utd2lkdGg9Ii41Ii8+CiAgPC9nPgo8L3N2Zz4K");
+  height: 30px;
+  width: 100%;
+  margin-bottom: -7px;
+  background-size: 40px;
+  background-repeat: no-repeat;
+  /* border-radius: 5px; */
+  /* background-color: #282c34; */
+  /* background-position: 10px 10px; */
+}
+
+.mweb-indigo .svg-markmap-box {
+  min-height: 20rem;
+  width: 100%;
+}
+
+.mweb-indigo .footnotes {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+/* 布局 end */
+/* prism-js 样式 */
+/* PrismJS 1.23.0
+https://prismjs.com/download.html#themes=prism-okaidia&languages=markup+css+clike+javascript */
+/**
+ * okaidia theme for JavaScript, CSS and HTML
+ * Loosely based on Monokai textmate theme by http://www.monokai.nl/
+ * @author ocodia
+ */
+.mweb-indigo code[class*=language-],
+.mweb-indigo pre[class*=language-] {
+  color: #f8f8f2;
+  background: none;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  font-size: 1em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+/* Code blocks */
+.mweb-indigo pre[class*=language-] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+  border-radius: 6px;
+}
+
+.mweb-indigo :not(pre) > code[class*=language-],
+.mweb-indigo pre[class*=language-] {
+  background: #272822;
+}
+
+/* Inline code */
+.mweb-indigo :not(pre) > code[class*=language-] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.mweb-indigo .token.comment,
+.mweb-indigo .token.prolog,
+.mweb-indigo .token.doctype,
+.mweb-indigo .token.cdata,
+.mweb-indigo .hljs-comment,
+.mweb-indigo .hljs-quote,
+.mweb-indigo .hljs-meta {
+  color: #8292a2;
+}
+
+.mweb-indigo .token.punctuation, .mweb-indigo .hljs-punctuation {
+  color: #f8f8f2;
+}
+
+.mweb-indigo .token.namespace {
+  opacity: 0.7;
+}
+
+.mweb-indigo .token.property,
+.mweb-indigo .token.tag,
+.mweb-indigo .token.constant,
+.mweb-indigo .token.symbol,
+.mweb-indigo .token.deleted,
+.mweb-indigo .hljs-property,
+.mweb-indigo .hljs-tag,
+.mweb-indigo .hljs-name,
+.mweb-indigo .hljs-variable.constant_,
+.mweb-indigo .hljs-symbol,
+.mweb-indigo .hljs-bullet,
+.mweb-indigo .hljs-deletion {
+  color: #f92672;
+}
+
+.mweb-indigo .token.boolean,
+.mweb-indigo .token.number,
+.mweb-indigo .hljs-literal,
+.mweb-indigo .hljs-number {
+  color: #ae81ff;
+}
+
+.mweb-indigo .token.selector,
+.mweb-indigo .token.attr-name,
+.mweb-indigo .token.string,
+.mweb-indigo .token.char,
+.mweb-indigo .token.builtin,
+.mweb-indigo .token.inserted,
+.mweb-indigo .hljs-selector-tag,
+.mweb-indigo .hljs-selector-id,
+.mweb-indigo .hljs-selector-class,
+.mweb-indigo .hljs-attr,
+.mweb-indigo .hljs-attribute,
+.mweb-indigo .hljs-string,
+.mweb-indigo .hljs-built_in,
+.mweb-indigo .hljs-addition {
+  color: #a6e22e;
+}
+
+.mweb-indigo .token.operator,
+.mweb-indigo .token.entity,
+.mweb-indigo .token.url,
+.mweb-indigo .language-css .token.string,
+.mweb-indigo .style .token.string,
+.mweb-indigo .token.variable,
+.mweb-indigo .hljs-operator,
+.mweb-indigo .hljs-link,
+.mweb-indigo .hljs-variable,
+.mweb-indigo .hljs-template-variable,
+.mweb-indigo .hljs-params {
+  color: #f8f8f2;
+}
+
+.mweb-indigo .token.atrule,
+.mweb-indigo .token.attr-value,
+.mweb-indigo .token.function,
+.mweb-indigo .token.class-name,
+.mweb-indigo .hljs-title.function_,
+.mweb-indigo .hljs-title,
+.mweb-indigo .hljs-title.class_ {
+  color: #e6db74;
+}
+
+.mweb-indigo .token.keyword, .mweb-indigo .hljs-keyword, .mweb-indigo .hljs-meta.keyword {
+  color: #66d9ef;
+}
+
+.mweb-indigo .token.regex,
+.mweb-indigo .token.important,
+.mweb-indigo .hljs-regexp,
+.mweb-indigo .hljs-strong {
+  color: #fd971f;
+}
+
+.mweb-indigo .token.important,
+.mweb-indigo .token.bold,
+.mweb-indigo .hljs-strong {
+  font-weight: bold;
+}
+
+.mweb-indigo .token.italic, .mweb-indigo .hljs-emphasis {
+  font-style: italic;
+}
+
+.mweb-indigo .token.entity {
+  cursor: help;
+}
+
+/* prism-js end */

@@ -1,0 +1,354 @@
+/* mweb-themes · smartblue
+ * 来源：https://github.com/imageslr/mweb-themes（ISC）
+ * 由 scripts/build-mweb-themes.cjs 生成，请勿手改 */
+@charset "UTF-8";
+.mweb-smartblue {
+  color: #595959;
+  font-size: 15px;
+  font-family: -apple-system, system-ui, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Hiragino Sans GB, Microsoft YaHei, Arial, sans-serif;
+  background-image: linear-gradient(90deg, rgba(60, 10, 30, 0.04) 3%, rgba(0, 0, 0, 0) 3%), linear-gradient(360deg, rgba(60, 10, 30, 0.04) 3%, rgba(0, 0, 0, 0) 3%);
+  background-size: 20px 20px;
+  background-position: center center;
+}
+
+/* 段落 */
+.mweb-smartblue p {
+  color: #595959;
+  font-size: 15px;
+  line-height: 2;
+  font-weight: 400;
+}
+
+/* 段落间距控制 */
+.mweb-smartblue p + p {
+  margin-top: 16px;
+}
+
+/* 标题的通用设置 */
+.mweb-smartblue h1,
+.mweb-smartblue h2,
+.mweb-smartblue h3,
+.mweb-smartblue h4,
+.mweb-smartblue h5,
+.mweb-smartblue h6 {
+  padding: 30px 0;
+  margin: 0;
+  color: #135ce0;
+}
+
+/* 一级标题 */
+.mweb-smartblue h1 {
+  position: relative;
+  text-align: center;
+  font-size: 22px;
+  margin: 50px 0;
+}
+
+/* 二级标题 */
+.mweb-smartblue h2 {
+  position: relative;
+  font-size: 20px;
+  border-left: 4px solid;
+  padding: 0 0 0 10px;
+  margin: 30px 0;
+}
+
+/* 三级标题 */
+.mweb-smartblue h3 {
+  font-size: 16px;
+}
+
+/* 无序列表 */
+.mweb-smartblue ul {
+  list-style: disc outside;
+  margin-left: 2em;
+  margin-top: 1em;
+}
+
+/* 无序列表内容 */
+.mweb-smartblue li {
+  line-height: 2;
+  color: #595959;
+  margin-bottom: 0;
+  list-style: inherit;
+}
+
+.mweb-smartblue img {
+  max-width: 100%;
+}
+
+/* 已加载图片 */
+.mweb-smartblue img.loaded {
+  margin: 0 auto;
+  display: block;
+}
+
+/* 引用 */
+.mweb-smartblue blockquote {
+  background: #fff9f9;
+  margin: 2em 0;
+  padding: 2px 20px;
+  border-left: 4px solid #b2aec5;
+}
+
+/* 引用文字 */
+.mweb-smartblue blockquote p {
+  color: #666;
+  line-height: 2;
+}
+
+/* 链接 */
+.mweb-smartblue a {
+  color: #036aca;
+  border-bottom: 1px solid rgba(3, 106, 202, 0.8);
+  font-weight: 400;
+  text-decoration: none;
+}
+
+/* 加粗 */
+.mweb-smartblue strong {
+  color: #036aca;
+}
+
+/* 加粗斜体 */
+.mweb-smartblue em strong {
+  color: #036aca;
+}
+
+/* 分隔线 */
+.mweb-smartblue hr {
+  border-top: 1px solid #135ce0;
+}
+
+/* 代码 */
+.mweb-smartblue pre {
+  overflow: auto;
+}
+
+.mweb-smartblue pre,
+.mweb-smartblue code {
+  overflow: auto;
+  position: relative;
+  line-height: 1.75;
+  font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+}
+
+.mweb-smartblue pre > code {
+  /* font-size: 12px; */
+  padding: 15px 12px;
+  margin: 0;
+  word-break: normal;
+  display: block;
+  overflow-x: auto;
+  color: #333;
+  background: #f8f8f8;
+}
+
+.mweb-smartblue code {
+  word-break: break-word;
+  border-radius: 2px;
+  overflow-x: auto;
+  background-color: #fff5f5;
+  color: #ff502c;
+  font-size: 0.87em;
+  padding: 0.065em 0.4em;
+}
+
+/* 表格 */
+.mweb-smartblue table {
+  border-collapse: collapse;
+  margin: 1rem 0;
+  overflow-x: auto;
+}
+
+.mweb-smartblue table th,
+.mweb-smartblue table td {
+  border: 1px solid #dfe2e5;
+  padding: 0.6em 1em;
+}
+
+.mweb-smartblue table tr {
+  border-top: 1px solid #dfe2e5;
+}
+
+.mweb-smartblue table tr:nth-child(2n) {
+  background-color: #f6f8fa;
+}
+
+/* 删除了调整 font-size、padding 的选项 */
+/* PrismJS 1.23.0
+https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+.mweb-smartblue code[class*=language-],
+.mweb-smartblue pre[class*=language-] {
+  color: black;
+  background: none;
+  text-shadow: 0 1px white;
+  font-family: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
+  /* font-size: 1em; */
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+
+.mweb-smartblue pre[class*=language-]::-moz-selection,
+.mweb-smartblue pre[class*=language-] ::-moz-selection,
+.mweb-smartblue code[class*=language-]::-moz-selection,
+.mweb-smartblue code[class*=language-] ::-moz-selection {
+  text-shadow: none;
+  background: #b3d4fc;
+}
+
+.mweb-smartblue pre[class*=language-]::selection,
+.mweb-smartblue pre[class*=language-] ::selection,
+.mweb-smartblue code[class*=language-]::selection,
+.mweb-smartblue code[class*=language-] ::selection {
+  text-shadow: none;
+  background: #b3d4fc;
+}
+
+@media print {
+  .mweb-smartblue code[class*=language-],
+.mweb-smartblue pre[class*=language-] {
+    text-shadow: none;
+  }
+}
+/* Code blocks */
+.mweb-smartblue pre[class*=language-] {
+  /* padding: 1em; */
+  margin: 0.5em 0;
+  overflow: auto;
+}
+
+.mweb-smartblue :not(pre) > code[class*=language-],
+.mweb-smartblue pre[class*=language-] {
+  background: #f5f2f0;
+}
+
+/* Inline code */
+.mweb-smartblue :not(pre) > code[class*=language-] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+
+.mweb-smartblue .token.comment,
+.mweb-smartblue .token.prolog,
+.mweb-smartblue .token.doctype,
+.mweb-smartblue .token.cdata,
+.mweb-smartblue .hljs-comment,
+.mweb-smartblue .hljs-quote,
+.mweb-smartblue .hljs-meta {
+  color: slategray;
+}
+
+.mweb-smartblue .token.punctuation, .mweb-smartblue .hljs-punctuation {
+  color: #999;
+}
+
+.mweb-smartblue .token.namespace {
+  opacity: 0.7;
+}
+
+.mweb-smartblue .token.property,
+.mweb-smartblue .token.tag,
+.mweb-smartblue .token.boolean,
+.mweb-smartblue .token.number,
+.mweb-smartblue .token.constant,
+.mweb-smartblue .token.symbol,
+.mweb-smartblue .token.deleted,
+.mweb-smartblue .hljs-property,
+.mweb-smartblue .hljs-tag,
+.mweb-smartblue .hljs-name,
+.mweb-smartblue .hljs-literal,
+.mweb-smartblue .hljs-number,
+.mweb-smartblue .hljs-variable.constant_,
+.mweb-smartblue .hljs-symbol,
+.mweb-smartblue .hljs-bullet,
+.mweb-smartblue .hljs-deletion {
+  color: #905;
+}
+
+.mweb-smartblue .token.selector,
+.mweb-smartblue .token.attr-name,
+.mweb-smartblue .token.string,
+.mweb-smartblue .token.char,
+.mweb-smartblue .token.builtin,
+.mweb-smartblue .token.inserted,
+.mweb-smartblue .hljs-selector-tag,
+.mweb-smartblue .hljs-selector-id,
+.mweb-smartblue .hljs-selector-class,
+.mweb-smartblue .hljs-attr,
+.mweb-smartblue .hljs-attribute,
+.mweb-smartblue .hljs-string,
+.mweb-smartblue .hljs-built_in,
+.mweb-smartblue .hljs-addition {
+  color: #690;
+}
+
+.mweb-smartblue .token.operator,
+.mweb-smartblue .token.entity,
+.mweb-smartblue .token.url,
+.mweb-smartblue .language-css .token.string,
+.mweb-smartblue .style .token.string,
+.mweb-smartblue .hljs-operator,
+.mweb-smartblue .hljs-link {
+  color: #9a6e3a;
+  /* This background color was intended by the author of this theme. */
+  background: rgba(255, 255, 255, 0.5);
+}
+
+.mweb-smartblue .token.atrule,
+.mweb-smartblue .token.attr-value,
+.mweb-smartblue .token.keyword,
+.mweb-smartblue .hljs-keyword,
+.mweb-smartblue .hljs-meta.keyword {
+  color: #07a;
+}
+
+.mweb-smartblue .token.function,
+.mweb-smartblue .token.class-name,
+.mweb-smartblue .hljs-title.function_,
+.mweb-smartblue .hljs-title,
+.mweb-smartblue .hljs-title.class_ {
+  color: #dd4a68;
+}
+
+.mweb-smartblue .token.regex,
+.mweb-smartblue .token.important,
+.mweb-smartblue .token.variable,
+.mweb-smartblue .hljs-regexp,
+.mweb-smartblue .hljs-strong,
+.mweb-smartblue .hljs-variable,
+.mweb-smartblue .hljs-template-variable,
+.mweb-smartblue .hljs-params {
+  color: #e90;
+}
+
+.mweb-smartblue .token.important,
+.mweb-smartblue .token.bold,
+.mweb-smartblue .hljs-strong {
+  font-weight: bold;
+}
+
+.mweb-smartblue .token.italic, .mweb-smartblue .hljs-emphasis {
+  font-style: italic;
+}
+
+.mweb-smartblue .token.entity {
+  cursor: help;
+}

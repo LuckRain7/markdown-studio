@@ -1,0 +1,415 @@
+/* mweb-themes · dracula
+ * 来源：https://github.com/imageslr/mweb-themes（ISC）
+ * 由 scripts/build-mweb-themes.cjs 生成，请勿手改 */
+@charset "UTF-8";
+/*
+ * PrismJS default theme
+ * 这个文件只应该包含变量
+ */
+/*
+ * Default bear theme，适用于 core/mweb-bear.scss。
+ * 所有 bear 主题，只需 import 这个文件，然后修改配色方案即可。
+ */
+/* font */
+/* container */
+/*  spacing */
+/* color */
+/* other */
+/**
+ * 在 bear 的主题中，某些变量的取值和其他变量是绑定的。
+ * 统一写在这里，这个文件应该在变量文件的最后被引入。
+ */
+/**
+ * Bear 的默认样式表。通过调整各个颜色变量的取值，就可以得到不同的 bear 主题。
+ * Bear 的配色方案位于 src/themes/bear-palettes 目录下。
+ */
+/**
+ * PrismJS 的样式表。颜色全部用变量表示，方便后续切换不同的配色方案。
+ */
+/* PrismJS 1.23.0
+https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript */
+/**
+ * prism.js default theme for JavaScript, CSS and HTML
+ * Based on dabblet (http://dabblet.com)
+ * @author Lea Verou
+ */
+.mweb-dracula {
+  /* Code blocks */
+  /* Inline code */
+}
+.mweb-dracula code[class*=language-],
+.mweb-dracula pre[class*=language-] {
+  color: white;
+  background: none;
+  font-family: Menlo-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+  font-size: 1em;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.5rem;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -moz-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+}
+.mweb-dracula pre[class*=language-]::-moz-selection, .mweb-dracula pre[class*=language-] ::-moz-selection, .mweb-dracula code[class*=language-]::-moz-selection, .mweb-dracula code[class*=language-] ::-moz-selection {
+  text-shadow: none;
+  background: #b3d4fc;
+}
+.mweb-dracula pre[class*=language-]::selection, .mweb-dracula pre[class*=language-] ::selection, .mweb-dracula code[class*=language-]::selection, .mweb-dracula code[class*=language-] ::selection {
+  text-shadow: none;
+  background: #b3d4fc;
+}
+@media print {
+  .mweb-dracula code[class*=language-],
+.mweb-dracula pre[class*=language-] {
+    text-shadow: none;
+  }
+}
+.mweb-dracula pre[class*=language-] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+}
+.mweb-dracula :not(pre) > code[class*=language-],
+.mweb-dracula pre[class*=language-] {
+  background: #1f202a;
+}
+.mweb-dracula :not(pre) > code[class*=language-] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+  white-space: normal;
+}
+.mweb-dracula .token.comment,
+.mweb-dracula .token.prolog,
+.mweb-dracula .token.doctype,
+.mweb-dracula .token.cdata,
+.mweb-dracula .hljs-comment,
+.mweb-dracula .hljs-quote,
+.mweb-dracula .hljs-meta {
+  color: #7587b3;
+}
+.mweb-dracula .token.punctuation, .mweb-dracula .hljs-punctuation {
+  color: #999;
+}
+.mweb-dracula .token.namespace {
+  opacity: 0.7;
+}
+.mweb-dracula .token.number,
+.mweb-dracula .token.boolean,
+.mweb-dracula .hljs-number,
+.mweb-dracula .hljs-literal {
+  color: #caa9fa;
+}
+.mweb-dracula .token.property,
+.mweb-dracula .token.tag,
+.mweb-dracula .token.constant,
+.mweb-dracula .token.symbol,
+.mweb-dracula .token.deleted,
+.mweb-dracula .hljs-property,
+.mweb-dracula .hljs-tag,
+.mweb-dracula .hljs-name,
+.mweb-dracula .hljs-variable.constant_,
+.mweb-dracula .hljs-symbol,
+.mweb-dracula .hljs-bullet,
+.mweb-dracula .hljs-deletion {
+  color: #905;
+}
+.mweb-dracula .token.selector,
+.mweb-dracula .token.string,
+.mweb-dracula .token.char,
+.mweb-dracula .token.builtin,
+.mweb-dracula .token.inserted,
+.mweb-dracula .hljs-selector-tag,
+.mweb-dracula .hljs-selector-id,
+.mweb-dracula .hljs-selector-class,
+.mweb-dracula .hljs-string,
+.mweb-dracula .hljs-built_in,
+.mweb-dracula .hljs-addition {
+  color: #f4f99d;
+}
+.mweb-dracula .token.attr-name, .mweb-dracula .hljs-attr, .mweb-dracula .hljs-attribute {
+  color: #f4f99d;
+}
+.mweb-dracula .token.char {
+  color: #f4f99d;
+}
+.mweb-dracula .token.operator,
+.mweb-dracula .token.entity,
+.mweb-dracula .token.url,
+.mweb-dracula .language-css .token.string,
+.mweb-dracula .style .token.string,
+.mweb-dracula .hljs-operator,
+.mweb-dracula .hljs-link {
+  color: #920448;
+  background: none;
+}
+.mweb-dracula .token.atrule,
+.mweb-dracula .token.attr-value,
+.mweb-dracula .token.keyword,
+.mweb-dracula .hljs-keyword,
+.mweb-dracula .hljs-meta.keyword {
+  color: #73d5e9;
+}
+.mweb-dracula .token.function,
+.mweb-dracula .token.class-name,
+.mweb-dracula .hljs-title.function_,
+.mweb-dracula .hljs-title,
+.mweb-dracula .hljs-title.class_ {
+  color: #73d5e9;
+}
+.mweb-dracula .token.regex,
+.mweb-dracula .token.important,
+.mweb-dracula .token.variable,
+.mweb-dracula .hljs-regexp,
+.mweb-dracula .hljs-strong,
+.mweb-dracula .hljs-variable,
+.mweb-dracula .hljs-template-variable,
+.mweb-dracula .hljs-params {
+  color: #0E73A2;
+}
+.mweb-dracula .token.important,
+.mweb-dracula .token.bold,
+.mweb-dracula .hljs-strong {
+  font-weight: bold;
+}
+.mweb-dracula .token.italic, .mweb-dracula .hljs-emphasis {
+  font-style: italic;
+}
+.mweb-dracula .token.entity {
+  cursor: help;
+}
+
+.mweb-dracula {
+  font-family: AvenirNext-Regular, -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif, Apple Color Emoji, Segoe UI Emoji;
+  font-size: 16px;
+  color: white;
+}
+
+.mweb-dracula {
+  background-color: #353846;
+  line-height: 1.6em;
+  -webkit-text-size-adjust: 100%;
+}
+
+.mweb-dracula * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+.mweb-dracula > *:first-child {
+  margin-top: 0 !important;
+}
+.mweb-dracula > *:last-child {
+  margin-top: 0 !important;
+}
+.mweb-dracula p, .mweb-dracula pre, .mweb-dracula ul, .mweb-dracula ol, .mweb-dracula dl, .mweb-dracula form, .mweb-dracula details, .mweb-dracula blockquote, .mweb-dracula table, .mweb-dracula xmp, .mweb-dracula plaintext, .mweb-dracula listing, .mweb-dracula figure, .mweb-dracula pre[class*=language-] {
+  margin: 0.75em 0 0.45em;
+}
+.mweb-dracula hr {
+  margin: 0.75em auto;
+}
+.mweb-dracula ul ul, .mweb-dracula ul ol, .mweb-dracula ol ul, .mweb-dracula ol ol {
+  margin-bottom: 0px;
+}
+.mweb-dracula h1, .mweb-dracula h2, .mweb-dracula h3, .mweb-dracula h4, .mweb-dracula h5, .mweb-dracula h6 {
+  margin-top: 1.5em;
+  margin-bottom: 0.75em;
+  margin-left: 0;
+  margin-right: 0;
+  font-family: AvenirNext-Medium;
+  font-weight: 500;
+  line-height: 1.5em;
+  color: #50fa7b;
+}
+.mweb-dracula h1 {
+  font-size: 1.5em;
+}
+.mweb-dracula h2 {
+  font-size: 1.3em;
+}
+.mweb-dracula h3 {
+  font-size: 1.1em;
+}
+.mweb-dracula h4 {
+  font-size: 1em;
+}
+.mweb-dracula h5 {
+  font-size: 1em;
+}
+.mweb-dracula h6 {
+  font-size: 1em;
+}
+.mweb-dracula hr {
+  height: 1px;
+  border: 0;
+  background-color: rgba(187, 145, 248, 0.4);
+  border-style: inset;
+  border-width: 1px;
+}
+.mweb-dracula p {
+  margin-left: 0;
+  margin-right: 0;
+}
+.mweb-dracula pre, .mweb-dracula pre[class*=language-] {
+  padding: 0;
+  border: 0;
+}
+.mweb-dracula blockquote {
+  display: block;
+  padding-left: 0.8em;
+  border-left: 0.2em solid #cdaef9;
+}
+.mweb-dracula blockquote > :first-child {
+  margin-top: 0;
+}
+.mweb-dracula blockquote > :last-child {
+  margin-bottom: 0;
+}
+.mweb-dracula li {
+  word-wrap: break-all;
+}
+.mweb-dracula ul, .mweb-dracula ol {
+  list-style: none;
+}
+.mweb-dracula ul {
+  margin-left: 1.3em;
+  padding: 0;
+}
+.mweb-dracula ol {
+  margin-left: 1.3em;
+  padding: 0;
+  counter-reset: ol_counter;
+}
+.mweb-dracula ul > li {
+  position: relative;
+}
+.mweb-dracula ul > li:before {
+  content: "•";
+  color: #cdaef9;
+  position: absolute;
+  left: -1.1em;
+}
+.mweb-dracula ol > li {
+  position: relative;
+}
+.mweb-dracula ol > li:before {
+  content: counter(ol_counter) ".";
+  counter-increment: ol_counter;
+  color: #cdaef9;
+  text-align: right;
+  min-width: 1em;
+  position: absolute;
+  left: -1.5em;
+}
+.mweb-dracula li + li {
+  margin-top: 0.25em;
+}
+.mweb-dracula ul ul, .mweb-dracula ol ul, .mweb-dracula ul ol, .mweb-dracula ol ol, .mweb-dracula li ul, .mweb-dracula li ol {
+  margin-top: 0.25em;
+  margin-left: 2em;
+}
+.mweb-dracula .task-list-item {
+  list-style-type: none;
+  text-indent: -1.5em;
+}
+.mweb-dracula .task-list-item:before {
+  content: "";
+  display: static;
+  margin-right: 0px;
+}
+.mweb-dracula .task-list-item > input[type=checkbox] {
+  text-indent: -1.7em;
+}
+.mweb-dracula img {
+  max-width: 100%;
+  height: auto;
+}
+.mweb-dracula u {
+  text-decoration: none;
+  background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 50%, #cdaef9 50%);
+  background-repeat: repeat-x;
+  background-size: 2px 2px;
+  background-position: 0 1em;
+}
+.mweb-dracula a {
+  color: #8be9fd;
+  text-decoration: none;
+}
+.mweb-dracula a:hover, .mweb-dracula a:focus, .mweb-dracula a:active {
+  text-decoration: underline;
+}
+.mweb-dracula a img {
+  border: none;
+}
+.mweb-dracula b, .mweb-dracula strong {
+  font-weight: bold;
+}
+.mweb-dracula i, .mweb-dracula cite, .mweb-dracula em, .mweb-dracula var, .mweb-dracula address, .mweb-dracula dfn {
+  font-style: italic;
+}
+.mweb-dracula del, .mweb-dracula s {
+  color: #b2b8a3;
+}
+.mweb-dracula pre, .mweb-dracula xmp, .mweb-dracula plaintext, .mweb-dracula listing, .mweb-dracula code, .mweb-dracula kbd, .mweb-dracula tt, .mweb-dracula samp {
+  font-family: Menlo-Regular, Menlo, Monaco, Consolas, "Courier New", monospace;
+}
+.mweb-dracula code {
+  display: inline;
+  border: solid 1px rgba(187, 145, 248, 0.4);
+  padding: 0.2em 0.5em;
+  font-size: 0.9em;
+  color: #f9f9f5;
+  background-color: #1f202a;
+}
+.mweb-dracula pre > code {
+  display: block;
+  border: solid 1px rgba(187, 145, 248, 0.4);
+  padding: 0.7em 1em;
+  font-size: 0.9em;
+  overflow-x: auto;
+}
+.mweb-dracula mark {
+  color: inherit;
+  display: inline;
+  padding: 0.2em 0.5em;
+  background-color: #5f6375;
+}
+.mweb-dracula figcaption {
+  text-align: center;
+}
+.mweb-dracula table {
+  color: #f9f9f5;
+  border-collapse: collapse;
+  background-color: #1f202a;
+  border-spacing: 2px;
+  font-size: 1em;
+  border: 1px;
+  border-spacing: 0;
+}
+.mweb-dracula th, .mweb-dracula td {
+  padding: 0.7em 1em;
+  font-size: 0.9em;
+  border: 1px solid rgba(187, 145, 248, 0.4);
+}
+.mweb-dracula caption, .mweb-dracula th, .mweb-dracula td {
+  text-align: left;
+  font-weight: normal;
+  vertical-align: middle;
+}
+.mweb-dracula div[id^=mweb-chart-ele] svg {
+  background-color: white;
+}
+.mweb-dracula .footnotes > ol li {
+  text-indent: 0;
+}
+.mweb-dracula .footnotes > ol li::before {
+  float: left;
+}

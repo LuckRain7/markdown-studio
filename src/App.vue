@@ -7,6 +7,7 @@ import SettingsModal from './components/SettingsModal.vue'
 import { usePersistentRef } from './composables/useStorage.js'
 import { renderMarkdown } from './composables/useMarkdown.js'
 import { useHistory } from './composables/useHistory.js'
+import { usePreviewStyle, APP_STYLE } from './composables/usePreviewStyle.js'
 import { sampleMarkdown } from './data/sample.js'
 
 const content = usePersistentRef('markdown-studio:content', sampleMarkdown)
@@ -17,6 +18,13 @@ const readingWidth = computed({
   get: () => Number(readingWidthRaw.value) || 900,
   set: (val) => (readingWidthRaw.value = String(val)),
 })
+
+// 预览样式：APP_STYLE 跟随界面主题，否则为 mweb 主题 id（与界面配色相互独立）
+const previewStyle = usePersistentRef('markdown-studio:preview-style', APP_STYLE)
+const { applied: appliedPreviewStyle, getCss: getPreviewCss } = usePreviewStyle(
+  previewStyle,
+  () => showToast('预览样式加载失败，已恢复默认'),
+)
 
 const isFullscreen = ref(false)
 const toast = ref('')
@@ -38,6 +46,9 @@ watch(
 )
 function setTheme(val) {
   theme.value = val
+}
+function setPreviewStyle(val) {
+  previewStyle.value = val
 }
 
 // —— 提示气泡 ——
@@ -88,6 +99,27 @@ function exportMarkdown() {
 
 function buildHtmlDocument() {
   const body = renderMarkdown(content.value)
+  const style = appliedPreviewStyle.value
+  if (style !== APP_STYLE) {
+    // 使用 mweb 预览样式：主题根节点挂在 <body> 上，背景色会铺满整个页面
+    return `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Markdown 导出</title>
+<style>
+  body { max-width: 800px; margin: 0 auto; padding: 2.5rem 1.2rem; }
+</style>
+<style>
+${getPreviewCss(style)}
+</style>
+</head>
+<body class="mweb-${style}">
+${body}
+</body>
+</html>`
+  }
   return `<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -239,6 +271,7 @@ onBeforeUnmount(() => {
   <div class="app">
     <Toolbar
       :theme="theme"
+      :preview-style="previewStyle"
       :is-fullscreen="isFullscreen"
       :word-count="wordCount"
       @new="newDocument"
@@ -248,6 +281,7 @@ onBeforeUnmount(() => {
       @copy-html="copyHtml"
       @toggle-fullscreen="toggleFullscreen"
       @set-theme="setTheme"
+      @set-preview-style="setPreviewStyle"
       @open-settings="openSettings"
     />
 
@@ -262,6 +296,7 @@ onBeforeUnmount(() => {
         ref="previewRef"
         :content="content"
         v-model:reading-width="readingWidth"
+        :preview-style="appliedPreviewStyle"
         :fullscreen="isFullscreen"
         @scroll="(e) => syncScroll('preview', e)"
         @exit-fullscreen="isFullscreen = false"

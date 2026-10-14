@@ -26,6 +26,15 @@ npm run preview  # 本地预览生产构建
 - **`src/composables/useMarkdown.js`** — 唯一的渲染管线，导出 `renderMarkdown(text)`。内部：`marked`（开启 GFM + breaks）→ `marked-highlight`（代码高亮）→ `DOMPurify.sanitize`（防 XSS）。**预览渲染和 HTML 导出共用这一个函数**，所以改渲染行为只需改这里一处。
 - **highlight.js 按需注册**：为控制打包体积，只在 `useMarkdown.js` 顶部显式 `import` 并注册了一批常用语言（js/ts/python/go/rust/sql/yaml…）和别名。**要支持新语言，必须在此处 import 对应 `highlight.js/lib/languages/xxx` 并加进 `languages` 表**——否则该语言代码块会回退成 plaintext。
 
+### 预览样式（mweb-themes）
+
+预览区的排版与界面配色相互独立：`theme` 管界面配色（13 套），`previewStyle` 管预览正文排版（`'app'` = 跟随界面主题的 `markdown.css`，否则为 `src/styles/mweb/` 下的某套主题）。
+
+- `src/styles/mweb/*.css` 和 `index.js` 由 `scripts/build-mweb-themes.cjs` 从 [imageslr/mweb-themes](https://github.com/imageslr/mweb-themes) 生成，**不要手改**；要调整就改脚本后重新生成（用法见脚本头部注释）。
+- 每套主题都限定在 `.mweb-<id>` 作用域下。选中 mweb 主题时，预览区 `<article>` 的类名是 `mweb-<id>`，**不再带 `.markdown-body`**，所以 `markdown.css`（包括 hljs 配色）都写在 `.markdown-body` 下，不会和主题互相干扰。
+- `src/composables/usePreviewStyle.js` 通过 `import.meta.glob(..., { query: '?inline' })` 按需懒加载主题 CSS，注入一个 `<style>` 标签；`applied` 要等 CSS 就绪才切换，导出 HTML 时复用同一份 CSS。
+- 原主题按 prism 的结构写，所以 `useMarkdown.js` 的 DOMPurify 钩子会给 `<pre>` 补上 `language-xxx`、给任务列表项补上 `task-list-item`；构建脚本会把 `.token.xxx` 的高亮配色映射到 `.hljs-xxx`。
+
 ### 编辑区 ⇆ 预览区滚动同步
 
 App.vue 的 `syncScroll` 按滚动比例双向同步。它依赖两个子组件用 `defineExpose` 暴露的内部 DOM 节点：

@@ -1,0 +1,651 @@
+/* mweb-themes · typo
+ * 来源：https://github.com/imageslr/mweb-themes（ISC）
+ * 由 scripts/build-mweb-themes.cjs 生成，请勿手改 */
+@charset "UTF-8";
+/* MWeb：增大字体，便于阅读 */
+.mweb-typo {
+  font-size: 14px;
+}
+
+.mweb-typo {
+  font-size: 1.3rem;
+}
+
+/* MWeb：增加 padding */
+
+/* 防止用户自定义背景颜色对网页的影响，添加让用户可以自定义字体 */
+.mweb-typo {
+  color: #333;
+  background: #fff;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  text-rendering: optimizelegibility;
+}
+
+/* 如果你的项目仅支持 IE9+ | Chrome | Firefox 等，推荐在 <html> 中添加 .borderbox 这个 class */
+
+/* 内外边距通常让各个浏览器样式的表现位置不同 */
+.mweb-typo dl,
+.mweb-typo dt,
+.mweb-typo dd,
+.mweb-typo ul,
+.mweb-typo ol,
+.mweb-typo li,
+.mweb-typo h1,
+.mweb-typo h2,
+.mweb-typo h3,
+.mweb-typo h4,
+.mweb-typo h5,
+.mweb-typo h6,
+.mweb-typo pre,
+.mweb-typo code,
+.mweb-typo form,
+.mweb-typo fieldset,
+.mweb-typo legend,
+.mweb-typo input,
+.mweb-typo textarea,
+.mweb-typo p,
+.mweb-typo blockquote,
+.mweb-typo th,
+.mweb-typo td,
+.mweb-typo hr,
+.mweb-typo button,
+.mweb-typo article,
+.mweb-typo aside,
+.mweb-typo details,
+.mweb-typo figcaption,
+.mweb-typo figure,
+.mweb-typo footer,
+.mweb-typo header,
+.mweb-typo menu,
+.mweb-typo nav,
+.mweb-typo section {
+  margin: 0;
+  padding: 0;
+}
+
+/* 重设 HTML5 标签, IE 需要在 js 中 createElement(TAG) */
+.mweb-typo article,
+.mweb-typo aside,
+.mweb-typo details,
+.mweb-typo figcaption,
+.mweb-typo figure,
+.mweb-typo footer,
+.mweb-typo header,
+.mweb-typo menu,
+.mweb-typo nav,
+.mweb-typo section {
+  display: block;
+}
+
+/* HTML5 媒体文件跟 img 保持一致 */
+.mweb-typo audio,
+.mweb-typo canvas,
+.mweb-typo video {
+  display: inline-block;
+}
+
+/* 要注意表单元素并不继承父级 font 的问题 */
+.mweb-typo,
+.mweb-typo button,
+.mweb-typo input,
+.mweb-typo select,
+.mweb-typo textarea {
+  font: 300 1em/1.8 PingFang SC, Lantinghei SC, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+}
+
+.mweb-typo button::-moz-focus-inner,
+.mweb-typo input::-moz-focus-inner {
+  padding: 0;
+  border: 0;
+}
+
+/* 去掉各Table cell 的边距并让其边重合 */
+.mweb-typo table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 去除默认边框 */
+.mweb-typo fieldset,
+.mweb-typo img {
+  border: 0;
+}
+
+/* 块/段落引用 */
+.mweb-typo blockquote {
+  position: relative;
+  color: #999;
+  font-weight: 400;
+  border-left: 1px solid #1abc9c;
+  padding-left: 1em;
+  margin: 1em 3em 1em 2em;
+}
+
+@media only screen and (max-width: 640px) {
+  .mweb-typo blockquote {
+    margin: 1em 0;
+  }
+}
+/* Firefox 以外，元素没有下划线，需添加 */
+.mweb-typo acronym,
+.mweb-typo abbr {
+  border-bottom: 1px dotted;
+  font-variant: normal;
+  text-decoration: none;
+}
+
+/* 添加鼠标问号，进一步确保应用的语义是正确的（要知道，交互他们也有洁癖，如果你不去掉，那得多花点口舌） */
+.mweb-typo abbr {
+  cursor: help;
+}
+
+/* 一致的 del 样式 */
+.mweb-typo del {
+  text-decoration: line-through;
+}
+
+.mweb-typo address,
+.mweb-typo caption,
+.mweb-typo cite,
+.mweb-typo code,
+.mweb-typo dfn,
+.mweb-typo em,
+.mweb-typo th,
+.mweb-typo var {
+  font-style: normal;
+  font-weight: 400;
+}
+
+/* 去掉列表前的标识, li 会继承，大部分网站通常用列表来很多内容，所以应该当去 */
+.mweb-typo ul,
+.mweb-typo ol {
+  list-style: none;
+}
+
+/* 对齐是排版最重要的因素, 别让什么都居中 */
+.mweb-typo caption,
+.mweb-typo th {
+  text-align: left;
+}
+
+.mweb-typo q:before,
+.mweb-typo q:after {
+  content: "";
+}
+
+/* 统一上标和下标 */
+.mweb-typo sub,
+.mweb-typo sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+}
+
+.mweb-typo :root sub,
+.mweb-typo :root sup {
+  vertical-align: baseline;
+  /* for ie9 and other modern browsers */
+}
+
+.mweb-typo sup {
+  top: -0.5em;
+}
+
+.mweb-typo sub {
+  bottom: -0.25em;
+}
+
+/* 让链接在 hover 状态下显示下划线 */
+.mweb-typo a {
+  color: #1abc9c;
+}
+
+.mweb-typo a:hover {
+  text-decoration: underline;
+}
+
+.mweb-typo a {
+  border-bottom: 1px solid #1abc9c;
+}
+
+.mweb-typo a:hover {
+  border-bottom-color: #555;
+  color: #555;
+  text-decoration: none;
+}
+
+/* 默认不显示下划线，保持页面简洁 */
+.mweb-typo ins,
+.mweb-typo a {
+  text-decoration: none;
+}
+
+/* 专名号：虽然 u 已经重回 html5 Draft，但在所有浏览器中都是可以使用的，
+ * 要做到更好，向后兼容的话，添加 class="typo-u" 来显示专名号
+ * 关于 <u> 标签：http://www.whatwg.org/specs/web-apps/current-work/multipage/text-level-semantics.html#the-u-element
+ * 被放弃的是 4，之前一直搞错 http://www.w3.org/TR/html401/appendix/changes.html#idx-deprecated
+ * 一篇关于 <u> 标签的很好文章：http://html5doctor.com/u-element/
+ */
+.mweb-typo u,
+.mweb-typo .typo-u {
+  text-decoration: underline;
+}
+
+/* 标记，类似于手写的荧光笔的作用 */
+.mweb-typo mark {
+  background: #fffdd1;
+  border-bottom: 1px solid #ffedce;
+  padding: 2px;
+  /* margin: 0 5px; */
+}
+
+/* 代码片断 */
+.mweb-typo pre,
+.mweb-typo code,
+.mweb-typo pre tt {
+  font-family: Courier, "Courier New", monospace;
+}
+
+.mweb-typo pre {
+  background: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: 1em 1.5em;
+  display: block;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* 一致化 horizontal rule */
+.mweb-typo hr {
+  border: none;
+  border-bottom: 1px solid #cfcfcf;
+  margin-bottom: 0.8em;
+  height: 10px;
+}
+
+/* 底部印刷体、版本等标记 */
+.mweb-typo small, .mweb-typo .typo-small, .mweb-typo figcaption {
+  font-size: 0.9em;
+  color: #888;
+}
+
+.mweb-typo strong,
+.mweb-typo b {
+  font-weight: bold;
+  color: #000;
+}
+
+/* 可拖动文件添加拖动手势 */
+.mweb-typo [draggable] {
+  cursor: move;
+}
+
+.mweb-typo .clearfix:before,
+.mweb-typo .clearfix:after {
+  content: "";
+  display: table;
+}
+
+.mweb-typo .clearfix:after {
+  clear: both;
+}
+
+.mweb-typo .clearfix {
+  zoom: 1;
+}
+
+/* 强制文本换行 */
+.mweb-typo .textwrap,
+.mweb-typo .textwrap td,
+.mweb-typo .textwrap th {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.mweb-typo .textwrap-table {
+  table-layout: fixed;
+}
+
+/* 提供 serif 版本的字体设置: iOS 下中文自动 fallback 到 sans-serif */
+.mweb-typo .serif {
+  font-family: Palatino, Optima, Georgia, serif;
+}
+
+/* 保证块/段落之间的空白隔行 */
+.mweb-typo p,
+.mweb-typo pre,
+.mweb-typo ul,
+.mweb-typo ol,
+.mweb-typo dl,
+.mweb-typo form,
+.mweb-typo hr,
+.mweb-typo table,
+.mweb-typo .typo-p,
+.mweb-typo .typo-pre,
+.mweb-typo .typo-ul,
+.mweb-typo .typo-ol,
+.mweb-typo .typo-dl,
+.mweb-typo .typo-form,
+.mweb-typo .typo-hr,
+.mweb-typo .typo-table,
+.mweb-typo blockquote {
+  margin-bottom: 1.2em;
+}
+
+.mweb-typo h1,
+.mweb-typo h2,
+.mweb-typo h3,
+.mweb-typo h4,
+.mweb-typo h5,
+.mweb-typo h6 {
+  font-family: PingFang SC, Verdana, Helvetica Neue, Microsoft Yahei, Hiragino Sans GB, Microsoft Sans Serif, WenQuanYi Micro Hei, sans-serif;
+  font-weight: 100;
+  color: #000;
+  line-height: 1.35;
+}
+
+/* 标题应该更贴紧内容，并与其他块区分，margin 值要相应做优化 */
+.mweb-typo h1,
+.mweb-typo h2,
+.mweb-typo h3,
+.mweb-typo h4,
+.mweb-typo h5,
+.mweb-typo h6,
+.mweb-typo .typo-h1,
+.mweb-typo .typo-h2,
+.mweb-typo .typo-h3,
+.mweb-typo .typo-h4,
+.mweb-typo .typo-h5,
+.mweb-typo .typo-h6 {
+  margin-top: 1.2em;
+  margin-bottom: 0.6em;
+  line-height: 1.35;
+}
+
+.mweb-typo h1,
+.mweb-typo .typo-h1 {
+  font-size: 2em;
+}
+
+.mweb-typo h2,
+.mweb-typo .typo-h2 {
+  font-size: 1.8em;
+}
+
+.mweb-typo h3,
+.mweb-typo .typo-h3 {
+  font-size: 1.6em;
+}
+
+.mweb-typo h4,
+.mweb-typo .typo-h4 {
+  font-size: 1.4em;
+}
+
+.mweb-typo h5,
+.mweb-typo h6,
+.mweb-typo .typo-h5,
+.mweb-typo .typo-h6 {
+  font-size: 1.2em;
+}
+
+/* 在文章中，应该还原 ul 和 ol 的样式 */
+.mweb-typo ul,
+.mweb-typo .typo-ul {
+  margin-left: 1.3em;
+  list-style: disc;
+}
+
+.mweb-typo ol,
+.mweb-typo .typo-ol {
+  list-style: decimal;
+  margin-left: 1.9em;
+}
+
+.mweb-typo li ul,
+.mweb-typo li ol,
+.mweb-typo .typo-ul ul,
+.mweb-typo .typo-ul ol,
+.mweb-typo .typo-ol ul,
+.mweb-typo .typo-ol ol {
+  margin-bottom: 0.8em;
+  margin-left: 2em;
+}
+
+.mweb-typo li ul,
+.mweb-typo .typo-ul ul,
+.mweb-typo .typo-ol ul {
+  list-style: circle;
+}
+
+/* 同 ul/ol，在文章中应用 table 基本格式 */
+.mweb-typo table th,
+.mweb-typo table td,
+.mweb-typo .typo-table th,
+.mweb-typo .typo-table td,
+.mweb-typo table caption {
+  border: 1px solid #ddd;
+  padding: 0.5em 1em;
+  color: #666;
+}
+
+.mweb-typo table th,
+.mweb-typo .typo-table th {
+  background: #fbfbfb;
+}
+
+.mweb-typo table thead th,
+.mweb-typo .typo-table thead th {
+  background: #f1f1f1;
+}
+
+.mweb-typo table caption {
+  border-bottom: none;
+}
+
+/* 去除 webkit 中 input 和 textarea 的默认样式  */
+.mweb-typo .typo-input,
+.mweb-typo .typo-textarea {
+  -webkit-appearance: none;
+  border-radius: 0;
+}
+
+.mweb-typo .typo-em,
+.mweb-typo em,
+.mweb-typo legend,
+.mweb-typo caption {
+  color: #000;
+  font-weight: inherit;
+}
+
+/* 着重号，只能在少量（少于100个字符）且全是全角字符的情况下使用 */
+.mweb-typo .typo-em {
+  position: relative;
+}
+
+.mweb-typo .typo-em:after {
+  position: absolute;
+  top: 0.65em;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  content: "・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・・";
+}
+
+/* Responsive images */
+.mweb-typo img {
+  max-width: 100%;
+}
+
+/* MWeb 代码片段样式 */
+/* PrismJS 1.14.0
+https://prismjs.com/download.html#themes=prism-coy&languages=markup+css+clike+javascript */
+/**
+ * prism.js Coy theme for JavaScript, CoffeeScript, CSS and HTML
+ * Based on https://github.com/tshedor/workshop-wp-theme (Example: http://workshop.kansan.com/category/sessions/basics or http://workshop.timshedor.com/category/sessions/basics);
+ * @author Tim  Shedor
+ */
+.mweb-typo code[class*=language-],
+.mweb-typo pre[class*=language-] {
+  font-family: Consolas, Menlo, Monaco, "Andale Mono WT", "Andale Mono", "Lucida Console", "Lucida Sans Typewriter", "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", "Nimbus Mono L", "Courier New", Courier, monospace;
+  font-size: 14px;
+  line-height: 1.375;
+  direction: ltr;
+  text-align: left;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  -moz-tab-size: 4;
+  -o-tab-size: 4;
+  tab-size: 4;
+  -webkit-hyphens: none;
+  -ms-hyphens: none;
+  hyphens: none;
+  background: #fafbf9;
+  color: #4299d7;
+}
+
+.mweb-typo pre[class*=language-] {
+  padding: 1em;
+  margin: 0.5em 0;
+  overflow: auto;
+}
+
+.mweb-typo :not(pre) > code[class*=language-] {
+  padding: 0.1em;
+  border-radius: 0.3em;
+}
+
+.mweb-typo .token.comment,
+.mweb-typo .token.prolog,
+.mweb-typo .token.doctype,
+.mweb-typo .token.cdata,
+.mweb-typo .hljs-comment,
+.mweb-typo .hljs-quote,
+.mweb-typo .hljs-meta {
+  color: #bdc3b7;
+}
+
+.mweb-typo .token.punctuation, .mweb-typo .hljs-punctuation {
+  color: #bdc3b7;
+}
+
+.mweb-typo .token.namespace {
+  opacity: 0.7;
+}
+
+.mweb-typo .token.tag,
+.mweb-typo .token.operator,
+.mweb-typo .token.number,
+.mweb-typo .hljs-tag,
+.mweb-typo .hljs-name,
+.mweb-typo .hljs-operator,
+.mweb-typo .hljs-number {
+  color: #1b6498;
+}
+
+.mweb-typo .token.property,
+.mweb-typo .token.function,
+.mweb-typo .hljs-property,
+.mweb-typo .hljs-title.function_ {
+  color: #66a329;
+}
+
+.mweb-typo .token.tag-id,
+.mweb-typo .token.selector,
+.mweb-typo .token.atrule-id,
+.mweb-typo .hljs-selector-tag,
+.mweb-typo .hljs-selector-id,
+.mweb-typo .hljs-selector-class {
+  color: #4d8217;
+}
+
+.mweb-typo code.language-javascript,
+.mweb-typo .token.attr-name,
+.mweb-typo .hljs-attr,
+.mweb-typo .hljs-attribute {
+  color: #66a329;
+}
+
+.mweb-typo code.language-css,
+.mweb-typo code.language-scss,
+.mweb-typo .token.boolean,
+.mweb-typo .token.string,
+.mweb-typo .token.entity,
+.mweb-typo .token.url,
+.mweb-typo .language-css .token.string,
+.mweb-typo .language-scss .token.string,
+.mweb-typo .style .token.string,
+.mweb-typo .token.attr-value,
+.mweb-typo .token.keyword,
+.mweb-typo .token.control,
+.mweb-typo .token.directive,
+.mweb-typo .token.unit,
+.mweb-typo .token.statement,
+.mweb-typo .token.regex,
+.mweb-typo .token.atrule,
+.mweb-typo .hljs-literal,
+.mweb-typo .hljs-string,
+.mweb-typo .hljs-link,
+.mweb-typo .hljs-keyword,
+.mweb-typo .hljs-meta.keyword,
+.mweb-typo .hljs-regexp {
+  color: #277fbe;
+}
+
+.mweb-typo .token.placeholder,
+.mweb-typo .token.variable,
+.mweb-typo .hljs-variable,
+.mweb-typo .hljs-template-variable,
+.mweb-typo .hljs-params {
+  color: #8dcefc;
+}
+
+.mweb-typo .token.deleted, .mweb-typo .hljs-deletion {
+  text-decoration: line-through;
+}
+
+.mweb-typo .token.inserted, .mweb-typo .hljs-addition {
+  border-bottom: 1px dotted #4d8217;
+  text-decoration: none;
+}
+
+.mweb-typo .token.italic, .mweb-typo .hljs-emphasis {
+  font-style: italic;
+}
+
+.mweb-typo .token.important,
+.mweb-typo .token.bold,
+.mweb-typo .hljs-strong {
+  font-weight: bold;
+}
+
+.mweb-typo .token.important, .mweb-typo .hljs-strong {
+  color: #66a329;
+}
+
+.mweb-typo .token.entity {
+  cursor: help;
+}
+
+.mweb-typo pre > code.highlight {
+  outline: 0.4em solid #66a329;
+  outline-offset: 0.4em;
+}
+
+.mweb-typo .line-numbers .line-numbers-rows {
+  border-right-color: #f3f4f1;
+}
+
+.mweb-typo .line-numbers-rows > span:before {
+  color: #d1d6cd;
+}
+
+.mweb-typo .line-highlight {
+  background: rgba(77, 130, 23, 0.2);
+  background: -webkit-gradient(linear, left top, right top, color-stop(70%, rgba(77, 130, 23, 0.2)), to(rgba(77, 130, 23, 0)));
+  background: linear-gradient(to right, rgba(77, 130, 23, 0.2) 70%, rgba(77, 130, 23, 0));
+}
+
+/*# sourceMappingURL=prism-base2tone-meadow-light.css.map */

@@ -150,72 +150,73 @@
   color: #c0392b;
 }
 
-/* ——— highlight.js 配色（跟随主题变量）——— */
-.hljs {
+/* ——— highlight.js 配色（跟随主题变量）———
+   限定在 .markdown-body 下：切到 mweb 预览样式时不再生效，避免与其配色冲突 */
+.markdown-body .hljs {
   color: var(--editor-ink);
 }
-.hljs-comment,
-.hljs-quote {
+.markdown-body .hljs-comment,
+.markdown-body .hljs-quote {
   color: var(--text-muted);
   font-style: italic;
 }
-.hljs-keyword,
-.hljs-selector-tag,
-.hljs-built_in,
-.hljs-name {
+.markdown-body .hljs-keyword,
+.markdown-body .hljs-selector-tag,
+.markdown-body .hljs-built_in,
+.markdown-body .hljs-name {
   color: var(--accent);
   font-weight: 500;
 }
-.hljs-string,
-.hljs-attr,
-.hljs-template-variable {
+.markdown-body .hljs-string,
+.markdown-body .hljs-attr,
+.markdown-body .hljs-template-variable {
   color: #5b8a72;
 }
-:root[data-theme='dark'] .hljs-string,
-:root[data-theme='dark'] .hljs-attr,
-:root[data-theme='midnight'] .hljs-string,
-:root[data-theme='midnight'] .hljs-attr {
+:root[data-theme='dark'] .markdown-body .hljs-string,
+:root[data-theme='dark'] .markdown-body .hljs-attr,
+:root[data-theme='midnight'] .markdown-body .hljs-string,
+:root[data-theme='midnight'] .markdown-body .hljs-attr {
   color: #8fc7a6;
 }
-.hljs-number,
-.hljs-literal {
+.markdown-body .hljs-number,
+.markdown-body .hljs-literal {
   color: #b9743a;
 }
-.hljs-title,
-.hljs-function .hljs-title,
-.hljs-section {
+.markdown-body .hljs-title,
+.markdown-body .hljs-function .hljs-title,
+.markdown-body .hljs-section {
   color: #4a6f9c;
   font-weight: 500;
 }
-:root[data-theme='dark'] .hljs-title,
-:root[data-theme='midnight'] .hljs-title {
+:root[data-theme='dark'] .markdown-body .hljs-title,
+:root[data-theme='midnight'] .markdown-body .hljs-title {
   color: #7fa8d4;
 }
 
 /* Gruvbox 代码高亮：绿字符串 / 黄标题，贴合原色板 */
-:root[data-theme='gruvbox'] .hljs-string,
-:root[data-theme='gruvbox'] .hljs-attr {
+:root[data-theme='gruvbox'] .markdown-body .hljs-string,
+:root[data-theme='gruvbox'] .markdown-body .hljs-attr {
   color: #b8bb26;
 }
-:root[data-theme='gruvbox'] .hljs-title {
+:root[data-theme='gruvbox'] .markdown-body .hljs-title {
   color: #fabd2f;
 }
-:root[data-theme='gruvbox'] .hljs-number,
-:root[data-theme='gruvbox'] .hljs-literal {
+:root[data-theme='gruvbox'] .markdown-body .hljs-number,
+:root[data-theme='gruvbox'] .markdown-body .hljs-literal {
   color: #d3869b;
 }
-.hljs-attribute,
-.hljs-variable,
-.hljs-type {
+.markdown-body .hljs-attribute,
+.markdown-body .hljs-variable,
+.markdown-body .hljs-type {
   color: #9c6b8a;
 }
-.hljs-meta {
+.markdown-body .hljs-meta {
   color: var(--text-muted);
 }
-.hljs-emphasis {
+.markdown-body .hljs-emphasis {
   font-style: italic;
 }
-.hljs-strong {
+.markdown-body .hljs-strong {
   font-weight: 700;
 }
 

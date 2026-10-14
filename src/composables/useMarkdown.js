@@ -61,6 +61,17 @@ DOMPurify.addHook('afterSanitizeAttributes', (node) => {
     node.setAttribute('target', '_blank')
     node.setAttribute('rel', 'noopener noreferrer')
   }
+  // 补齐 mweb 预览样式依赖的类名（与 prism / MWeb 的输出保持一致）：
+  // 代码块的 <pre> 带上与 <code> 相同的 language-xxx，任务列表项带上 task-list-item
+  if (node.tagName === 'PRE') {
+    const lang = node.firstElementChild?.className.match(/\blanguage-[\w-]+/)
+    if (lang) node.classList.add(lang[0])
+  }
+  if (node.tagName === 'LI') {
+    const first = node.firstElementChild
+    const box = first?.tagName === 'P' ? first.firstElementChild : first
+    if (box?.matches('input[type="checkbox"]')) node.classList.add('task-list-item')
+  }
 })
 
 /**

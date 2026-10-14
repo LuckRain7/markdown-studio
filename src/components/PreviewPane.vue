@@ -6,12 +6,18 @@ const props = defineProps({
   content: { type: String, default: '' },
   fullscreen: { type: Boolean, default: false },
   readingWidth: { type: Number, default: 900 },
+  // 'app' 用内置 .markdown-body 排版，否则挂上对应的 mweb 主题类名
+  previewStyle: { type: String, default: 'app' },
 })
 const emit = defineEmits(['scroll', 'exit-fullscreen', 'update:readingWidth'])
 
 // 全屏阅读宽度：滑块拉到最大值即视为「全宽」，不再限制
 const WIDTH_MIN = 560
 const WIDTH_MAX = 1600
+const bodyClass = computed(() =>
+  props.previewStyle === 'app' ? 'markdown-body' : `mweb-${props.previewStyle}`,
+)
+
 const isFullWidth = computed(() => props.readingWidth >= WIDTH_MAX)
 const widthLabel = computed(() => (isFullWidth.value ? '全宽' : `${props.readingWidth}px`))
 const scrollerStyle = computed(() =>
@@ -73,7 +79,8 @@ const html = computed(() => renderMarkdown(debounced.value))
     </div>
     <article
       ref="scroller"
-      class="preview markdown-body"
+      class="preview"
+      :class="bodyClass"
       :style="scrollerStyle"
       v-html="html"
       @scroll="emit('scroll', $event)"

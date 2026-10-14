@@ -1,9 +1,11 @@
 <script setup>
 import { ref, onMounted, onBeforeUnmount } from 'vue'
 import BrandLogo from './BrandLogo.vue'
+import { mwebThemes, APP_STYLE } from '../composables/usePreviewStyle.js'
 
 defineProps({
   theme: { type: String, default: 'light' },
+  previewStyle: { type: String, default: APP_STYLE },
   isFullscreen: { type: Boolean, default: false },
   wordCount: { type: Number, default: 0 },
 })
@@ -16,6 +18,7 @@ const emit = defineEmits([
   'copy-html',
   'toggle-fullscreen',
   'set-theme',
+  'set-preview-style',
   'open-settings',
 ])
 
@@ -36,18 +39,32 @@ const themes = [
   { id: 'midnight', name: '午夜墨', swatch: 'linear-gradient(135deg,#2a3048,#7a8af5)' },
 ]
 
-const themeMenuOpen = ref(false)
-function toggleThemeMenu() {
-  themeMenuOpen.value = !themeMenuOpen.value
+// 预览样式（mweb-themes）：按浅色/深色分组，色板取主题背景色 + 强调色
+const styleGroups = [
+  { label: '浅色', items: mwebThemes.filter((t) => t.mode === 'light') },
+  { label: '深色', items: mwebThemes.filter((t) => t.mode === 'dark') },
+]
+function styleSwatch(t) {
+  return `linear-gradient(135deg, ${t.bg} 50%, ${t.accent} 50%)`
+}
+
+// 当前展开的下拉菜单：null | 'theme' | 'style'，同一时间只开一个
+const openMenu = ref(null)
+function toggleMenu(name) {
+  openMenu.value = openMenu.value === name ? null : name
 }
 function pickTheme(id) {
   emit('set-theme', id)
-  themeMenuOpen.value = false
+  openMenu.value = null
 }
-// Esc 关闭主题菜单，与设置/全屏浮层行为一致
+function pickStyle(id) {
+  emit('set-preview-style', id)
+  openMenu.value = null
+}
+// Esc 关闭下拉菜单，与设置/全屏浮层行为一致
 function onKeydown(e) {
-  if (e.key === 'Escape' && themeMenuOpen.value) {
-    themeMenuOpen.value = false
+  if (e.key === 'Escape' && openMenu.value) {
+    openMenu.value = null
   }
 }
 onMounted(() => document.addEventListener('keydown', onKeydown))
@@ -126,9 +143,72 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
       <div class="theme-picker">
         <button
           class="btn icon-only"
+          title="预览样式"
+          :class="{ active: openMenu === 'style' }"
+          @click="toggleMenu('style')"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 20 9.5 5h1L16 20M6.2 14.5h7.6" />
+            <path d="M17 11.5c.6-.6 1.4-1 2.3-1 1.5 0 2.2.9 2.2 2.3V20M21.5 15.8c-3.5 0-5 .8-5 2.3 0 1.1.8 1.9 2 1.9 1.7 0 3-1.4 3-3.4" />
+          </svg>
+        </button>
+        <Transition name="menu">
+          <div v-if="openMenu === 'style'" class="theme-menu style-menu" role="menu">
+            <button
+              class="theme-option"
+              :class="{ current: previewStyle === APP_STYLE }"
+              role="menuitem"
+              @click="pickStyle(APP_STYLE)"
+            >
+              <span class="swatch follow"></span>
+              <span class="theme-name">跟随界面主题</span>
+              <svg
+                v-if="previewStyle === APP_STYLE"
+                class="check"
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path d="M5 12l5 5L20 7" />
+              </svg>
+            </button>
+            <template v-for="g in styleGroups" :key="g.label">
+              <div class="menu-group">{{ g.label }}</div>
+              <button
+                v-for="t in g.items"
+                :key="t.id"
+                class="theme-option"
+                :class="{ current: t.id === previewStyle }"
+                role="menuitem"
+                @click="pickStyle(t.id)"
+              >
+                <span class="swatch" :style="{ background: styleSwatch(t) }"></span>
+                <span class="theme-name">{{ t.name }}</span>
+                <svg
+                  v-if="t.id === previewStyle"
+                  class="check"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M5 12l5 5L20 7" />
+                </svg>
+              </button>
+            </template>
+            <a
+              class="menu-credit"
+              href="https://github.com/imageslr/mweb-themes"
+              target="_blank"
+              rel="noopener noreferrer"
+            >主题来自 mweb-themes</a>
+          </div>
+        </Transition>
+      </div>
+
+      <div class="theme-picker">
+        <button
+          class="btn icon-only"
           title="切换主题"
-          :class="{ active: themeMenuOpen }"
-          @click="toggleThemeMenu"
+          :class="{ active: openMenu === 'theme' }"
+          @click="toggleMenu('theme')"
         >
           <svg viewBox="0 0 24 24" aria-hidden="true">
             <circle cx="12" cy="12" r="9" />
@@ -139,7 +219,7 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
           </svg>
         </button>
         <Transition name="menu">
-          <div v-if="themeMenuOpen" class="theme-menu" role="menu">
+          <div v-if="openMenu === 'theme'" class="theme-menu" role="menu">
             <button
               v-for="t in themes"
               :key="t.id"
@@ -161,12 +241,8 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
             </button>
           </div>
         </Transition>
-        <div
-          v-if="themeMenuOpen"
-          class="theme-backdrop"
-          @click="themeMenuOpen = false"
-        ></div>
       </div>
+      <div v-if="openMenu" class="theme-backdrop" @click="openMenu = null"></div>
 
       <button class="btn icon-only" title="历史与设置" @click="emit('open-settings')">
         <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -360,6 +436,34 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
 
 .theme-name {
   flex: 1;
+}
+
+.style-menu {
+  min-width: 180px;
+  max-height: min(70vh, 460px);
+}
+
+.swatch.follow {
+  background: conic-gradient(var(--surface) 0 50%, var(--accent) 0);
+}
+
+.menu-group {
+  padding: 0.55rem 0.6rem 0.2rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.12em;
+  color: var(--text-muted);
+}
+
+.menu-credit {
+  margin-top: 0.2rem;
+  padding: 0.5rem 0.6rem 0.3rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+.menu-credit:hover {
+  color: var(--accent);
 }
 
 .theme-option .check {
