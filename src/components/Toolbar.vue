@@ -8,11 +8,14 @@ defineProps({
   previewStyle: { type: String, default: APP_STYLE },
   isFullscreen: { type: Boolean, default: false },
   wordCount: { type: Number, default: 0 },
+  // 当前打开的本地文件名，非空时显示「刷新」按钮
+  openedFileName: { type: String, default: '' },
 })
 
 const emit = defineEmits([
   'new',
   'open',
+  'reload',
   'export-md',
   'export-html',
   'copy-html',
@@ -96,6 +99,18 @@ onBeforeUnmount(() => document.removeEventListener('keydown', onKeydown))
           <path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
         </svg>
         <span>打开</span>
+      </button>
+
+      <button
+        v-if="openedFileName"
+        class="btn icon-only"
+        :title="`重新读取 ${openedFileName}`"
+        @click="emit('reload')"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21 12a9 9 0 1 1-2.64-6.36L21 8" />
+          <path d="M21 3v5h-5" />
+        </svg>
       </button>
 
       <div class="divider" role="separator"></div>

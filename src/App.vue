@@ -63,23 +63,71 @@ function showToast(msg) {
 function newDocument() {
   if (content.value.trim() && !confirm('确定要清空当前内容、新建文档吗？')) return
   content.value = ''
+  openedFile.value = null
   showToast('已新建空白文档')
 }
 
-function openFile() {
-  fileInput.value?.click()
+// 当前打开的本地文件：{ name, handle?, file?, text }，用于「刷新」重新读取。
+// 优先用 File System Access API 的 handle——每次 getFile() 都能拿到磁盘上的最新内容；
+// 不支持时退回 <input> 拿到的 File，但它只是快照，文件被改动后重读可能失败或仍是旧内容。
+const openedFile = ref(null)
+const OPEN_TYPES = [
+  {
+    description: 'Markdown',
+    accept: { 'text/markdown': ['.md', '.markdown'], 'text/plain': ['.txt'] },
+  },
+]
+
+async function openFile() {
+  if (!window.showOpenFilePicker) {
+    fileInput.value?.click()
+    return
+  }
+  let handle
+  try {
+    ;[handle] = await window.showOpenFilePicker({ types: OPEN_TYPES })
+  } catch (err) {
+    if (err?.name !== 'AbortError') fileInput.value?.click() // 非用户取消（如被策略禁用）时退回 <input>
+    return
+  }
+  try {
+    const file = await handle.getFile()
+    loadFile({ name: file.name, handle }, await file.text())
+    showToast(`已打开 ${file.name}`)
+  } catch {
+    showToast('文件读取失败')
+  }
 }
 function onFileChosen(e) {
   const file = e.target.files?.[0]
   if (!file) return
-  const reader = new FileReader()
-  reader.onload = () => {
-    content.value = String(reader.result ?? '')
-    showToast(`已打开 ${file.name}`)
-  }
-  reader.onerror = () => showToast('文件读取失败')
-  reader.readAsText(file)
+  file
+    .text()
+    .then((text) => {
+      loadFile({ name: file.name, file }, text)
+      showToast(`已打开 ${file.name}`)
+    })
+    .catch(() => showToast('文件读取失败'))
   e.target.value = '' // 允许重复打开同一文件
+}
+function loadFile(source, text) {
+  content.value = text
+  openedFile.value = { ...source, text }
+}
+
+async function reloadFile() {
+  const opened = openedFile.value
+  if (!opened) return
+  if (content.value !== opened.text && !confirm(`编辑区有未导出的修改，确定用 ${opened.name} 的内容覆盖吗？`)) return
+  try {
+    const file = opened.handle ? await opened.handle.getFile() : opened.file
+    loadFile(opened, await file.text())
+    showToast(`已重新读取 ${opened.name}`)
+  } catch {
+    showToast(
+      opened.handle ? '文件读取失败，可能已被移动或删除' : '文件已变更，当前浏览器无法直接重读，请重新打开',
+    )
+  }
 }
 
 function download(filename, text, mime) {
@@ -274,8 +322,10 @@ onBeforeUnmount(() => {
       :preview-style="previewStyle"
       :is-fullscreen="isFullscreen"
       :word-count="wordCount"
+      :opened-file-name="openedFile?.name || ''"
       @new="newDocument"
       @open="openFile"
+      @reload="reloadFile"
       @export-md="exportMarkdown"
       @export-html="exportHtml"
       @copy-html="copyHtml"
