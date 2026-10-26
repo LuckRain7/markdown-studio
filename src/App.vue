@@ -8,6 +8,7 @@ import { usePersistentRef } from './composables/useStorage.js'
 import { renderMarkdown } from './composables/useMarkdown.js'
 import { useHistory } from './composables/useHistory.js'
 import { usePreviewStyle, APP_STYLE } from './composables/usePreviewStyle.js'
+import { getFileRecord, putFileRecord } from './composables/useFileHandleDB.js'
 import { sampleMarkdown } from './data/sample.js'
 
 const content = usePersistentRef('markdown-studio:content', sampleMarkdown)
@@ -64,6 +65,7 @@ function newDocument() {
   if (content.value.trim() && !confirm('确定要清空当前内容、新建文档吗？')) return
   content.value = ''
   openedFile.value = null
+  setFileParam(null)
   showToast('已新建空白文档')
 }
 
@@ -113,11 +115,65 @@ function onFileChosen(e) {
 function loadFile(source, text) {
   content.value = text
   openedFile.value = { ...source, text }
+  // 有句柄才能在刷新/重开链接时恢复，此时把文件名写进 URL 并存下句柄；<input> 打开的拿不到句柄，清掉参数
+  if (source.handle) {
+    setFileParam(source.name)
+    putFileRecord({ name: source.name, handle: source.handle, text })
+  } else {
+    setFileParam(null)
+  }
+}
+
+// —— URL 参数 ?file=<文件名>：标记当前打开的本地文件，配合 IndexedDB 里的句柄恢复 ——
+// 浏览器拿不到本地文件的完整路径，只能用文件名做键；同名文件以最近打开的为准。
+const FILE_PARAM = 'file'
+function setFileParam(name) {
+  try {
+    const url = new URL(location.href)
+    if (name) url.searchParams.set(FILE_PARAM, name)
+    else url.searchParams.delete(FILE_PARAM)
+    window.history.replaceState(window.history.state, '', url)
+  } catch (err) {
+    console.warn('更新 URL 参数失败：', err)
+  }
+}
+
+// 句柄的读权限：刷新页面后通常会回到 'prompt'，request 为 true 时才发起授权（须在用户点击中调用）
+async function hasReadPermission(handle, request) {
+  const opts = { mode: 'read' }
+  try {
+    if ((await handle.queryPermission?.(opts)) === 'granted') return true
+    return request && (await handle.requestPermission?.(opts)) === 'granted'
+  } catch {
+    return false
+  }
+}
+
+async function restoreFromUrl() {
+  const name = new URLSearchParams(location.search).get(FILE_PARAM)
+  if (!name) return
+  const record = await getFileRecord(name)
+  if (!record?.handle) {
+    setFileParam(null)
+    showToast(`未找到 ${name} 的打开记录，请重新打开该文件`)
+    return
+  }
+  openedFile.value = { name, handle: record.handle, text: record.text }
+  if (await hasReadPermission(record.handle, false)) {
+    await reloadFile()
+  } else {
+    showToast(`点击「刷新」按钮授权读取 ${name}`)
+  }
 }
 
 async function reloadFile() {
   const opened = openedFile.value
   if (!opened) return
+  // 先授权再弹确认框：requestPermission 需要用户点击带来的激活状态，确认框停留太久会让它失效
+  if (opened.handle && !(await hasReadPermission(opened.handle, true))) {
+    showToast(`未获得 ${opened.name} 的读取权限`)
+    return
+  }
   if (content.value !== opened.text && !confirm(`编辑区有未导出的修改，确定用 ${opened.name} 的内容覆盖吗？`)) return
   try {
     const file = opened.handle ? await opened.handle.getFile() : opened.file
@@ -309,6 +365,7 @@ function syncScroll(source, e) {
 onMounted(() => {
   document.addEventListener('keydown', onKeydown)
   history.init()
+  restoreFromUrl()
 })
 onBeforeUnmount(() => {
   document.removeEventListener('keydown', onKeydown)
