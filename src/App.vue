@@ -73,6 +73,13 @@ function newDocument() {
 // 优先用 File System Access API 的 handle——每次 getFile() 都能拿到磁盘上的最新内容；
 // 不支持时退回 <input> 拿到的 File，但它只是快照，文件被改动后重读可能失败或仍是旧内容。
 const openedFile = ref(null)
+
+// 标签页标题显示当前文件名，方便在多个标签页中找到；没有打开文件时恢复默认标题
+const DEFAULT_TITLE = document.title
+watch(
+  () => openedFile.value?.name,
+  (name) => (document.title = name ? `${name} · Markdown Studio` : DEFAULT_TITLE),
+)
 const OPEN_TYPES = [
   {
     description: 'Markdown',
